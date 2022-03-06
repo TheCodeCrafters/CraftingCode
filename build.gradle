@@ -39,6 +39,10 @@ processResources {
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
 	it.options.release = 17
+	it.options.encoding = 'UTF-8'
+	it.options.compilerArgs = [
+		'--add-modules', 'jdk.incubator.foreign'
+	] 
 }
 
 java {
