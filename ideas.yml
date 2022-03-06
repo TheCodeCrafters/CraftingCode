@@ -1,9 +1,11 @@
 lang-api:
    - create VM
-   - execute script
-   - query value
    - call functions
    - create objects ( if avaliable )
+   - get/set value,
+   - get error
+   - load file
+   - register function/class
 core:
    - a lang in the pc is an installable disk ( enables a flag on the pc )
    - networking:
