@@ -4,7 +4,7 @@ lang-api:
    - query value
    - call functions
    - create objects ( if avaliable )
-root:
+core:
    - a lang in the pc is an installable disk ( enables a flag on the pc )
    - networking:
         - interconnecting computers via:
@@ -44,4 +44,5 @@ root:
         - Ruby
         - Fantom (?)
         - Squirrel ( i like to suffer )
+        - ZenScript
         - Python ( JavaPython if i manage to work on it, else just use Jython or CBind CPython )
