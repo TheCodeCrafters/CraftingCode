@@ -1,0 +1,47 @@
+lang-api:
+   - create VM
+   - execute script
+   - query value
+   - call functions
+   - create objects ( if avaliable )
+root:
+   - a lang in the pc is an installable disk ( enables a flag on the pc )
+   - networking:
+        - interconnecting computers via:
+             - cable:
+                  - may want to add different types of cables with different velocity for a sense of "progression"
+             - wireless:
+                  - same note as above but with wireless
+                  - different wireless frequencies == different networks ( may be protected with passwords )
+             - websocket:
+                  - can connect to the world outside of the game
+                  - may be used to connect in-game via networks
+   - graphics:
+        - different graphics modes, like in the old era:
+             - high-definition mode ( single-pixel )
+             - low-definition mode ( 2x2 pixels )
+             - text mode ( just chars, but of any color )
+        - monitors:
+             - advanced: supports all graphic modes
+             - simple: only supports low and text modes
+   - robots:
+        - used to interact with the world
+        - may have an inventory
+   - langs included in core:
+        - AngelScript
+        - LUA
+   - imposed limitations:
+        - all computers consume energy:
+             - advanced: 100rf/t
+             - basic: 10rf/t
+        - networks:
+             - wireless: max 30 blocks
+             - cable: add 60 blocks for cable level
+   - addons:
+      - addons may add support for more langs, by using the lang-api we provide
+      - addon langs:
+        - Mono ( basically any lang )
+        - Ruby
+        - Fantom (?)
+        - Squirrel ( i like to suffer )
+        - Python ( JavaPython if i manage to work on it, else just use Jython or CBind CPython )
