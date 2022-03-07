@@ -1,4 +1,4 @@
-package io.github.Bubblie.craftingcode.langapi;
+package io.github.bubblie.craftingcode.langapi;
 
 public interface LanguageProvider {
 	String getLanguageName();

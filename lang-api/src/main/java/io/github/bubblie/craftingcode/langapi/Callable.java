@@ -1,4 +1,4 @@
-package io.github.Bubblie.craftingcode.langapi;
+package io.github.bubblie.craftingcode.langapi;
 
 import org.jetbrains.annotations.Nullable;
 

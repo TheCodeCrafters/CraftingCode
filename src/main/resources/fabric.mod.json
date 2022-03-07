@@ -7,7 +7,8 @@
   "description": "A mod about computers and languages",
   "authors": [
     "Bubblie01",
-    "ENDERZOMBI102"
+    "ENDERZOMBI102",
+    "kb1000"
   ],
   "contact": {
     "sources": "https://github.com/Bubblie01/CraftingCode"
@@ -19,7 +20,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.Bubblie.craftingcode.core.CraftingCode"
+      "io.github.bubblie.craftingcode.core.CraftingCode"
+    ],
+    "preLaunch": [
+      "io.github.bubblie.craftingcode.core.CraftingCodePreLaunch"
     ]
   },
   "mixins": [

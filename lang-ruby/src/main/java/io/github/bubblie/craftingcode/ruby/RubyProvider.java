@@ -1,6 +1,6 @@
-package io.github.Bubblie.craftingcode.ruby;
+package io.github.bubblie.craftingcode.ruby;
 
-import io.github.Bubblie.craftingcode.langapi.LanguageProvider;
+import io.github.bubblie.craftingcode.langapi.LanguageProvider;
 
 public class RubyProvider implements LanguageProvider {
 	@Override
