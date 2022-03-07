@@ -1,4 +1,7 @@
 package io.github.bubblie.craftingcode.langapi;
 
-public class VmException extends Exception {
+/**
+ * Exception that happened in the VM
+ */
+public class VmException extends RuntimeException {
 }

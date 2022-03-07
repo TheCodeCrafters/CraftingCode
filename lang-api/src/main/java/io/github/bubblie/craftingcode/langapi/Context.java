@@ -1,7 +1,20 @@
 package io.github.bubblie.craftingcode.langapi;
 
-import java.util.UUID;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public interface Context {
-	UUID getContextUUID();
+/**
+ * An try-with-resources-enabled object that is responsible for:
+ *  - Save/loading the language state for a computer
+ *  - Getting a value in the state
+ *  - Setting a value in the state
+ *  - Call a global function defined in the state
+ */
+public interface Context extends AutoCloseable {
+	Value getValue( String name );
+	void setValue( String name, Value value );
+	Value call( String name ) throws WrappedException;
+
+	void saveState( OutputStream stream );
+	void loadState( InputStream stream );
 }

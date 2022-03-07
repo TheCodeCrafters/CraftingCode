@@ -23,7 +23,7 @@
       "io.github.bubblie.craftingcode.core.CraftingCode"
     ],
     "preLaunch": [
-      "io.github.bubblie.craftingcode.core.CraftingCodePreLaunch"
+		"io.github.bubblie.craftingcode.core.CraftingCodePreLaunch"
     ]
   },
   "mixins": [

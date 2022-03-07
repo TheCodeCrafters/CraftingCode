@@ -1,8 +1,9 @@
 package io.github.bubblie.craftingcode.langapi;
 
-import org.jetbrains.annotations.Nullable;
-
+/**
+ * An object that may be invoked by java.
+ * Often used for callbacks and event handlers
+ */
 public interface Callable {
-	@Nullable
-	Object invoke( Object... args );
+	Value invoke( Object... args ) throws WrappedException;
 }
