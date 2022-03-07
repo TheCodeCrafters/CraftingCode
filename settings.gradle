@@ -10,5 +10,5 @@ pluginManagement {
 }
 include 'lang-api'
 include 'lang-lua'
-include 'lang-ruby'
+include 'lang-dummy'
 
