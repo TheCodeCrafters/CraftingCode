@@ -1,7 +1,7 @@
-package io.github.bubblie.craftingcode.dummy;
+package io.github.thecodecrafters.craftingcode.dummy;
 
-import io.github.bubblie.craftingcode.langapi.LanguageProvider;
-import io.github.bubblie.craftingcode.langapi.VirtualMachine;
+import io.github.thecodecrafters.craftingcode.langapi.LanguageProvider;
+import io.github.thecodecrafters.craftingcode.langapi.VirtualMachine;
 
 public class DummyProvider implements LanguageProvider {
 	@Override

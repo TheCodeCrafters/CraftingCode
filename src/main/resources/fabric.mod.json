@@ -11,7 +11,8 @@
     "kb1000"
   ],
   "contact": {
-    "sources": "https://github.com/Bubblie01/CraftingCode"
+    "sources": "https://github.com/TheCodeCrafters/CraftingCode",
+    "issues": "https://github.com/TheCodeCrafters/CraftingCode/issues"
   },
 
   "license": "MIT",
@@ -20,10 +21,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.bubblie.craftingcode.core.CraftingCode"
+      "io.github.thecodecrafters.craftingcode.core.CraftingCode"
     ],
     "preLaunch": [
-		"io.github.bubblie.craftingcode.core.CraftingCodePreLaunch"
+      "io.github.thecodecrafters.craftingcode.core.CraftingCodePreLaunch"
     ]
   },
   "mixins": [
@@ -33,7 +34,7 @@
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "~1.18.2",
     "java": ">=17"
   }
 }

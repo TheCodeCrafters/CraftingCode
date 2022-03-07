@@ -1,4 +1,4 @@
-package io.github.bubblie.craftingcode.util;
+package io.github.thecodecrafters.craftingcode.util;
 
 import sun.misc.Unsafe;
 

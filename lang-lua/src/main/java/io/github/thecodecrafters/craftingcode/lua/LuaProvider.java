@@ -1,6 +1,6 @@
-package io.github.bubblie.craftingcode.lua;
+package io.github.thecodecrafters.craftingcode.lua;
 
-import io.github.bubblie.craftingcode.langapi.LanguageProvider;
+import io.github.thecodecrafters.craftingcode.langapi.LanguageProvider;
 
 public class LuaProvider implements LanguageProvider {
 	@Override

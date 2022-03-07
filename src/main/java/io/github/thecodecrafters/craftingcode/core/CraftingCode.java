@@ -1,4 +1,4 @@
-package io.github.bubblie.craftingcode.core;
+package io.github.thecodecrafters.craftingcode.core;
 
 import jdk.incubator.foreign.*;
 import net.fabricmc.api.ModInitializer;
