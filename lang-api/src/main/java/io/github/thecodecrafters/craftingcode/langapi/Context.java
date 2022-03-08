@@ -16,7 +16,7 @@ import java.io.OutputStream;
 public interface Context extends AutoCloseable {
 	Value getValue( String name );
 	void setValue( String name, Value value );
-	Value call( String name, Object... args ) throws WrappedException;
+	Value call( String name, Object... args ) throws VmException;
 	@Nullable WrappedException getLastException();
 
 	void saveState( OutputStream stream );
