@@ -1,6 +1,6 @@
-package io.github.bubblie.craftingcode.core;
+package io.github.thecodecrafters.craftingcode.core;
 
-import io.github.bubblie.craftingcode.util.PanamaEnabler;
+import io.github.thecodecrafters.craftingcode.util.PanamaEnabler;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 
 public class CraftingCodePreLaunch implements PreLaunchEntrypoint {

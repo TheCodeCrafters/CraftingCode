@@ -1,4 +1,4 @@
-package io.github.bubblie.craftingcode.langapi;
+package io.github.thecodecrafters.craftingcode.langapi;
 
 /**
  * The provider is the thing the mod interfaces with when loading languages.

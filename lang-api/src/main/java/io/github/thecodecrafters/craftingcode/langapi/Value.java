@@ -1,4 +1,4 @@
-package io.github.bubblie.craftingcode.langapi;
+package io.github.thecodecrafters.craftingcode.langapi;
 
 import java.util.List;
 import java.util.Map;

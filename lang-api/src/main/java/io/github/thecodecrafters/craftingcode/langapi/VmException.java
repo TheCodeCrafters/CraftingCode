@@ -1,4 +1,4 @@
-package io.github.bubblie.craftingcode.langapi;
+package io.github.thecodecrafters.craftingcode.langapi;
 
 /**
  * Exception that happened in the VM
