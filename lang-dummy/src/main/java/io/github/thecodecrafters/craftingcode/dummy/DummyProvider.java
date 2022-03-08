@@ -16,7 +16,7 @@ public class DummyProvider implements LanguageProvider {
 
 	@Override
 	public String getLanguageDescription() {
-		return "Ur a dum dummy";
+		return "Provides a language api implementation for testing purposes";
 	}
 
 	@Override
