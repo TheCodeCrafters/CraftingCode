@@ -1,5 +1,7 @@
 {
 	"name": "Technician's Guide",
-	"landing_text": "LANDING TEXT",
+	"landing_text": "There once was a time of vacuum tubes, then transistors came and made everything smol, and then micro, and then nano, and now we have computers, idk where i was going with this... Welcome to CraftingCode!",
+	"creative_tab": "craftingcode.main",
+	"subtitle": "A technician's best ally",
 	"version": 1
 }
