@@ -1,8 +1,9 @@
+//file:noinspection GroovyAssignabilityCheck
 plugins {
 	id 'com.github.johnrengelman.shadow' version '7.1.2'
 	id 'fabric-loom' version '0.11-SNAPSHOT'
-	id("io.github.juuxel.loom-quiltflower") version "1.6.0"
-	id("org.quiltmc.quilt-mappings-on-loom") version "4.0.0"
+	id 'io.github.juuxel.loom-quiltflower' version "1.6.0"
+	id 'org.quiltmc.quilt-mappings-on-loom' version "4.0.0"
 	id 'maven-publish'
 }
 
@@ -15,19 +16,24 @@ configurations {
 }
 
 repositories {
-
+	maven { url 'https://maven.terraformersmc.com/releases/' }
+	mavenCentral()
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:$minecraft_version"
-	mappings(loom.layered {
-		addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${minecraft_version}+build.${quilt_mappings}:v2"))
-	})
+	mappings loom.layered {
+		addLayer( quiltMappings.mappings("org.quiltmc:quilt-mappings:$minecraft_version+build.$quilt_mappings:v2") )
+	}
 	modImplementation "net.fabricmc:fabric-loader:$loader_version"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
+	modImplementation "com.terraformersmc:modmenu:$modmenu_version"
 
-	shade compileOnly( project(':lang-api') )
+	shade implementation( project(':lang-api') )
+	shade implementation( project(':lang-dummy') )
+//	shade compileOnly( project(':lang-lua') )  // uncomment to test lua
+
 }
 
 processResources {
@@ -39,7 +45,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	// Minecraft 1.18 (1.18-pre2) and upwards uses Java 17.
 	it.options.encoding = 'UTF-8'
 	it.options.release.set(17)
 	it.options.compilerArgs = [

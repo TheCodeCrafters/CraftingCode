@@ -1,21 +1,31 @@
 package io.github.thecodecrafters.craftingcode.core;
 
-import jdk.incubator.foreign.*;
 import net.fabricmc.api.ModInitializer;
 
-import java.lang.invoke.MethodType;
+import static io.github.thecodecrafters.craftingcode.core.Const.*;
 
 public class CraftingCode implements ModInitializer {
+	private static CraftingCode INSTANCE;
+
+	private final ProviderManager providerManager = new ProviderManager();
+
+	public CraftingCode() { INSTANCE = this; }
+
 	@Override
 	public void onInitialize() {
-		System.out.println("Hello fucking world!");
-		CLinker linker = CLinker.getInstance();
-		SymbolLookup systemLookup = CLinker.systemLookup();
-		MemoryAddress printf = systemLookup.lookup("printf").orElseThrow();
-		try(ResourceScope scope = ResourceScope.newConfinedScope()) {
-			linker.downcallHandle(printf, MethodType.methodType(int.class, MemoryAddress.class), FunctionDescriptor.of(CLinker.C_INT, CLinker.C_POINTER)).invoke(CLinker.toCString("Hello, Panama world!\n", scope).address());
-		} catch (Throwable e) {
-			throw new RuntimeException(e);
-		}
+		MOD_LOGGER.info(
+				"Initializing CraftingCode-Core version {} with api version {}",
+				MOD_VERSION,
+				API_VERSION
+		);
+		providerManager.loadProviders();
+	}
+
+	public ProviderManager getProviderManager() {
+		return providerManager;
+	}
+
+	public static CraftingCode getInstance() {
+		return INSTANCE;
 	}
 }
