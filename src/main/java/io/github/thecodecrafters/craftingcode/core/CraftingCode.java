@@ -1,6 +1,5 @@
 package io.github.thecodecrafters.craftingcode.core;
 
-import io.github.thecodecrafters.craftingcode.core.item.ItemGroups;
 import io.github.thecodecrafters.craftingcode.core.registry.ItemRegistry;
 import net.fabricmc.api.ModInitializer;
 

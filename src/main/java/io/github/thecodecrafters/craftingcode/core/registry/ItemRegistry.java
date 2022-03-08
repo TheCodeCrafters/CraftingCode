@@ -3,7 +3,6 @@ package io.github.thecodecrafters.craftingcode.core.registry;
 import io.github.thecodecrafters.craftingcode.core.Const;
 import io.github.thecodecrafters.craftingcode.core.item.ItemGroups;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.registry.Registry;
 
