@@ -17,6 +17,7 @@ configurations {
 
 repositories {
 	maven { url 'https://maven.terraformersmc.com/releases/' }
+	maven { url 'https://maven.blamejared.com' }
 	mavenCentral()
 }
 
@@ -29,6 +30,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
 	modImplementation "com.terraformersmc:modmenu:$modmenu_version"
+	modImplementation "vazkii.patchouli:Patchouli:$patchouli_version-FABRIC"
 
 	shade implementation( project(':lang-api') )
 	shade implementation( project(':lang-dummy') )

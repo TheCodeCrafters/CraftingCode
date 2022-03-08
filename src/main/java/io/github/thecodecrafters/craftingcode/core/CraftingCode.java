@@ -1,5 +1,7 @@
 package io.github.thecodecrafters.craftingcode.core;
 
+import io.github.thecodecrafters.craftingcode.core.item.ItemGroups;
+import io.github.thecodecrafters.craftingcode.core.registry.ItemRegistry;
 import net.fabricmc.api.ModInitializer;
 
 import static io.github.thecodecrafters.craftingcode.core.Const.*;
@@ -19,6 +21,7 @@ public class CraftingCode implements ModInitializer {
 				API_VERSION
 		);
 		providerManager.loadProviders();
+		ItemRegistry.register();
 	}
 
 	public ProviderManager getProviderManager() {
