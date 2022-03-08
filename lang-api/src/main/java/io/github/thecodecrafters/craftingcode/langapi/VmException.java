@@ -8,6 +8,10 @@ public class VmException extends RuntimeException {
 		super(e);
 	}
 
+	public VmException(Throwable e) {
+		super(e);
+	}
+
 	public VmException(String s) {
 		super(s);
 	}

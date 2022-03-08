@@ -10,5 +10,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly project(':lang-api')
+    implementation 'org.jetbrains:annotations:22.0.0'
+	compileOnly project(':lang-api')
 }

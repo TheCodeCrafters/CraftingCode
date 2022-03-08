@@ -20,9 +20,10 @@ public interface VirtualMachine {
 
 	/**
 	 * Register a global function that may be called in the language without importing anything.
+	 * @param name name the function will go by in the vm
 	 * @param handle handle of the function
 	 */
-	void registerFunction( MethodHandle handle );
+	void registerFunction( String name, MethodHandle handle );
 
 	/**
 	 * Register a module that can be imported by the language.

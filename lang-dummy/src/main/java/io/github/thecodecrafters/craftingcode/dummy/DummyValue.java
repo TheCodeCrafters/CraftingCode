@@ -3,6 +3,8 @@ package io.github.thecodecrafters.craftingcode.dummy;
 import io.github.thecodecrafters.craftingcode.langapi.Callable;
 import io.github.thecodecrafters.craftingcode.langapi.Value;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +15,6 @@ public class DummyValue implements Value {
 	public DummyValue(Object obj) {
 		this.value = obj;
 	}
-
 
 	@Override
 	public String asString() {
@@ -77,7 +78,12 @@ public class DummyValue implements Value {
 		return value == null;
 	}
 
+
 	public static Value ofNull() {
 		return NULL_VALUE;
+	}
+
+	public static Value ofCallable(MethodHandle callable) {
+		return new DummyValue( new DummyCallable( callable ) );
 	}
 }

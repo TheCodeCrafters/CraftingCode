@@ -21,6 +21,6 @@ public class DummyProvider implements LanguageProvider {
 
 	@Override
 	public VirtualMachine createMachine() {
-		return null;
+		return new DummyVirtualMachine( this );
 	}
 }
