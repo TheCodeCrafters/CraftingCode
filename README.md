@@ -1,9 +1,13 @@
-# Fabric Example Mod
+Crafting Code
+-
 
-## Setup
+A multi-language compatible mod for creating runnable code and computers in the game.
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+#### Features
+- Multi-language
+  - LUA 5.3/2
+  - AngelScript
+- Autonomous robots
+- Graphics API with 3 operational modes ( pixel, 2x2 pixel, text )
+- In-World monitors
