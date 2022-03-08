@@ -2,8 +2,10 @@ package io.github.thecodecrafters.craftingcode.lua;
 
 import io.github.thecodecrafters.craftingcode.langapi.LanguageProvider;
 import io.github.thecodecrafters.craftingcode.langapi.VirtualMachine;
+import org.jetbrains.annotations.NotNull;
 
 public class LuaProvider implements LanguageProvider {
+	@NotNull
 	@Override
 	public String getLanguageName() {
 		return "LUA";
@@ -22,6 +24,7 @@ public class LuaProvider implements LanguageProvider {
 				""";
 	}
 
+	@NotNull
 	@Override
 	public VirtualMachine createMachine() {
 		return null;

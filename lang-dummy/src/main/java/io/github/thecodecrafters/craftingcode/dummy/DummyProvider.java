@@ -2,10 +2,11 @@ package io.github.thecodecrafters.craftingcode.dummy;
 
 import io.github.thecodecrafters.craftingcode.langapi.LanguageProvider;
 import io.github.thecodecrafters.craftingcode.langapi.VirtualMachine;
+import org.jetbrains.annotations.NotNull;
 
 public class DummyProvider implements LanguageProvider {
 	@Override
-	public String getLanguageName() {
+	public @NotNull String getLanguageName() {
 		return "DummyLang";
 	}
 
@@ -20,7 +21,7 @@ public class DummyProvider implements LanguageProvider {
 	}
 
 	@Override
-	public VirtualMachine createMachine() {
+	public @NotNull VirtualMachine createMachine() {
 		return new DummyVirtualMachine( this );
 	}
 }
