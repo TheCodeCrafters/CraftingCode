@@ -8,15 +8,16 @@ import java.util.Map;
  */
 public interface Value {
 	String asString();
-	char asChar();
-	boolean asBoolean();
-	short asShort();
-	int asInt();
-	long asLong();
-	float asFloat();
-	double asDouble();
+	Character asChar();
+	Boolean asBoolean();
+	Short asShort();
+	Integer asInt();
+	Long asLong();
+	Float asFloat();
+	Double asDouble();
 	Map<String, Value> asMap();
 	List<Value> asList();
+	Callable asCallable();
 
 	boolean isNull();
 }
