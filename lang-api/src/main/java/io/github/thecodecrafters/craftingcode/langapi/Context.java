@@ -1,7 +1,5 @@
 package io.github.thecodecrafters.craftingcode.langapi;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -11,13 +9,11 @@ import java.io.OutputStream;
  *  - Getting a value in the state
  *  - Setting a value in the state
  *  - Call a global function defined in the state
- *  - Get the last throwed exception/error
  */
 public interface Context extends AutoCloseable {
 	Value getValue( String name );
 	void setValue( String name, Value value );
 	Value call( String name, Object... args ) throws VmException;
-	@Nullable WrappedException getLastException();
 
 	void saveState( OutputStream stream );
 	void loadState( InputStream stream );

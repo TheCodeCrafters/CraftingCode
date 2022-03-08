@@ -39,11 +39,6 @@ public class DummyContext implements Context {
 	}
 
 	@Override
-	public @Nullable WrappedException getLastException() {
-		return new WrappedException( lastException );
-	}
-
-	@Override
 	public void saveState(OutputStream stream) {
 		// no op
 	}
