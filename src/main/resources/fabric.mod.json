@@ -3,7 +3,7 @@
   "id": "craftingcode",
   "version": "${version}",
 
-  "name": "CraftingCode: Rescratched",
+  "name": "CraftingCode Core",
   "description": "A mod about computers and languages",
   "authors": [
     "Bubblie01",
@@ -25,6 +25,9 @@
     ],
     "preLaunch": [
       "io.github.thecodecrafters.craftingcode.core.CraftingCodePreLaunch"
+    ],
+    "modmenu": [
+      "io.github.thecodecrafters.craftingcode.compat.modmenu.CraftingCodeModMenuEntrypoint"
     ]
   },
   "mixins": [
@@ -36,5 +39,17 @@
     "fabric": "*",
     "minecraft": "~1.18.2",
     "java": ">=17"
+  },
+
+  "suggests": {
+    "modmenu": "*"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Discord server": "https://discord.gg/QNByKjHRkC "
+      }
+    }
   }
 }
