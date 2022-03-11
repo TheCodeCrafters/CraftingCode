@@ -3,10 +3,11 @@
 package io.github.thecodecrafters.craftingcode.lua.foreign;
 
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.VarHandle;
-import java.nio.ByteOrder;
+
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryAddress.NULL;
+
 public class Lua  {
 
     static {
@@ -907,6 +908,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static void lua_call(Addressable L, int n, int r) {
+        lua_callk(L, n, r, 0, NULL);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle lua_pcallk$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_pcallk$MH,"lua_pcallk");
     }
@@ -918,6 +924,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static int lua_pcall(Addressable L, int n, int r, int f) {
+        return lua_pcallk(L, n, r, f, 0, NULL);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle lua_load$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_load$MH,"lua_load");
     }
@@ -984,6 +995,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static void lua_yield(Addressable L, int n) {
+        lua_yieldk(L, n, 0, NULL);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle lua_gc$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_gc$MH,"lua_gc");
     }
@@ -1072,6 +1088,77 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    // some useful macros
+    public static Addressable lua_getextraspace(Addressable L) {
+        return L.address().addOffset(-LUA_EXTRASPACE());
+    }
+    public static double lua_tonumber(Addressable L, int i) {
+        return lua_tonumberx(L, i, NULL);
+    }
+    public static long lua_tointeger(Addressable L, int i) {
+        return lua_tointegerx(L, i, NULL);
+    }
+    public static void lua_pop(Addressable L, int n) {
+        lua_settop(L, -n-1);
+    }
+    public static void lua_newtable(Addressable L) {
+        lua_createtable(L, 0, 0);
+    }
+    public static void lua_register(Addressable L, Addressable n, Addressable f) {
+        lua_pushcfunction(L, f);
+        lua_setglobal(L, f);
+    }
+    public static void lua_pushcfunction(Addressable L, Addressable f) {
+        lua_pushcclosure(L, f, 0);
+    }
+    public static boolean lua_isfunction(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TFUNCTION();
+    }
+    public static boolean lua_istable(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TTABLE();
+    }
+    public static boolean lua_islightuserdata(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TLIGHTUSERDATA();
+    }
+    public static boolean lua_isnil(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TNIL();
+    }
+    public static boolean lua_isboolean(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TBOOLEAN();
+    }
+    public static boolean lua_isthread(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TTHREAD();
+    }
+    public static boolean lua_isnone(Addressable L, int n) {
+        return lua_type(L, n) == LUA_TNONE();
+    }
+    public static boolean lua_isnoneornil(Addressable L, int n) {
+        return lua_type(L, n) <= 0;
+    }
+    public static void lua_pushliteral(Addressable L, String s) {
+        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
+            lua_pushstring(L, CLinker.toCString(s, scope));
+        }
+    }
+    public static void lua_pushglobaltable(Addressable L) {
+        lua_rawgeti(L, LUA_REGISTRYINDEX(), LUA_RIDX_GLOBALS());
+    }
+    public static MemoryAddress lua_tostring(Addressable L, int i) {
+        return lua_tolstring(L, i, NULL);
+    }
+    public static void lua_insert(Addressable L, int idx) {
+        lua_rotate(L, idx, 1);
+    }
+    public static void lua_remove(Addressable L, int idx) {
+        lua_rotate(L, idx, -1);
+        lua_pop(L, 1);
+    }
+    public static void lua_replace(Addressable L, int idx) {
+        lua_copy(L, -1, idx);
+        lua_pop(L, 1);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle lua_getstack$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_getstack$MH,"lua_getstack");
     }
@@ -1358,6 +1445,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static void luaL_checkversion(Addressable L) {
+        luaL_checkversion_(L, LUA_VERSION_NUM(), LUAL_NUMSIZES());
+    }
+    // end of manually inserted macro translations
     public static MethodHandle luaL_getmetafield$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_getmetafield$MH,"luaL_getmetafield");
     }
@@ -1633,6 +1725,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static int luaL_loadfile(Addressable L, Addressable f) {
+        return luaL_loadfilex(L, f, NULL);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle luaL_loadbufferx$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_loadbufferx$MH,"luaL_loadbufferx");
     }
@@ -1732,6 +1829,43 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    // some useful macros
+    // TODO: luaL_newlibtable
+    // TODO: luaL_newlib
+    public static void luaL_argcheck(Addressable L, boolean cond, int arg, Addressable extramsg) {
+        if (!cond)
+            luaL_argerror(L, arg, extramsg);
+    }
+    public static MemoryAddress luaL_checkstring(Addressable L, int n) {
+        return luaL_checklstring(L, n, NULL);
+    }
+    public static MemoryAddress luaL_optstring(Addressable L, int n, Addressable d) {
+        return luaL_optlstring(L, n, d, NULL);
+    }
+    public static MemoryAddress luaL_typename(Addressable L, int i) {
+        return lua_typename(L, lua_type(L, i));
+    }
+    public static int luaL_dofile(Addressable L, Addressable fn) {
+        int err = luaL_loadfile(L, fn);
+        if (err == 0)
+            err = lua_pcall(L, 0, LUA_MULTRET(), 0);
+        return err;
+    }
+    public static int luaL_dostring(Addressable L, Addressable s) {
+        int err = luaL_loadstring(L, s);
+        if (err == 0)
+            err = lua_pcall(L, 0, LUA_MULTRET(), 0);
+        return err;
+    }
+    public static int luaL_getmetatable(Addressable L, Addressable n) {
+        return lua_getfield(L, LUA_REGISTRYINDEX(), n);
+    }
+    // TODO: lua_opt (function argument)
+    public static void luaL_loadbuffer(Addressable L, Addressable s, long sz, Addressable n) {
+        luaL_loadbufferx(L,s,sz,n,NULL);
+    }
+    // end of manually inserted macro translations
     public static MethodHandle luaL_buffinit$MH() {
         return RuntimeHelper.requireNonNull(constants$25.luaL_buffinit$MH,"luaL_buffinit");
     }
