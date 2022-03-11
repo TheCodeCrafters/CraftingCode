@@ -46,13 +46,15 @@ processResources {
 	}
 }
 
-tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) and upwards uses Java 17.
-	it.options.encoding = 'UTF-8'
-	it.options.release.set(17)
-	it.options.compilerArgs = [
-		'--add-modules', 'jdk.incubator.foreign'
-	] 
+allprojects {
+	tasks.withType(JavaCompile).configureEach {
+		// Minecraft 1.18 (1.18-pre2) and upwards uses Java 17.
+		it.options.encoding = 'UTF-8'
+		it.options.release.set(17)
+		it.options.compilerArgs = [
+			'--add-modules', 'jdk.incubator.foreign'
+		]
+	}
 }
 
 java {
