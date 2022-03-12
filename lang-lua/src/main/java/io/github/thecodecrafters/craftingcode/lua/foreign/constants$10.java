@@ -7,6 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$10 {
 
     static final FunctionDescriptor lua_createtable$FUNC = FunctionDescriptor.ofVoid(
@@ -21,7 +23,7 @@ class constants$10 {
     );
     static final FunctionDescriptor lua_newuserdata$FUNC = FunctionDescriptor.of(C_POINTER,
         C_POINTER,
-        C_LONG
+        ADDRESS
     );
     static final MethodHandle lua_newuserdata$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_newuserdata",

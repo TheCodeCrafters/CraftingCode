@@ -6,7 +6,11 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$19 {
 
     static final FunctionDescriptor luaopen_eris$FUNC = FunctionDescriptor.of(C_INT,
@@ -27,8 +31,8 @@ class constants$19 {
     );
     static final FunctionDescriptor luaL_checkversion_$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
-        C_DOUBLE,
-        C_LONG
+        lua_Number,
+        ADDRESS
     );
     static final MethodHandle luaL_checkversion_$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "luaL_checkversion_",

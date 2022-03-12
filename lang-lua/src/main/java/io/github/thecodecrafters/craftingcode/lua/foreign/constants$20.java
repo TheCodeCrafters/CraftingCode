@@ -6,6 +6,9 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
 import static jdk.incubator.foreign.CLinker.*;
 class constants$20 {
 
@@ -40,7 +43,7 @@ class constants$20 {
         "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
         constants$20.luaL_optlstring$FUNC, false
     );
-    static final FunctionDescriptor luaL_checknumber$FUNC = FunctionDescriptor.of(C_DOUBLE,
+    static final FunctionDescriptor luaL_checknumber$FUNC = FunctionDescriptor.of(lua_Number,
         C_POINTER,
         C_INT
     );
@@ -49,17 +52,17 @@ class constants$20 {
         "(Ljdk/incubator/foreign/MemoryAddress;I)D",
         constants$20.luaL_checknumber$FUNC, false
     );
-    static final FunctionDescriptor luaL_optnumber$FUNC = FunctionDescriptor.of(C_DOUBLE,
+    static final FunctionDescriptor luaL_optnumber$FUNC = FunctionDescriptor.of(lua_Number,
         C_POINTER,
         C_INT,
-        C_DOUBLE
+        lua_Number
     );
     static final MethodHandle luaL_optnumber$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "luaL_optnumber",
         "(Ljdk/incubator/foreign/MemoryAddress;ID)D",
         constants$20.luaL_optnumber$FUNC, false
     );
-    static final FunctionDescriptor luaL_checkinteger$FUNC = FunctionDescriptor.of(C_LONG_LONG,
+    static final FunctionDescriptor luaL_checkinteger$FUNC = FunctionDescriptor.of(lua_Integer,
         C_POINTER,
         C_INT
     );

@@ -6,6 +6,8 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
 import static jdk.incubator.foreign.CLinker.*;
 class constants$11 {
 
@@ -22,7 +24,7 @@ class constants$11 {
     static final FunctionDescriptor lua_seti$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
         C_INT,
-        C_LONG_LONG
+        lua_Integer
     );
     static final MethodHandle lua_seti$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_seti",
@@ -41,7 +43,7 @@ class constants$11 {
     static final FunctionDescriptor lua_rawseti$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
         C_INT,
-        C_LONG_LONG
+        lua_Integer
     );
     static final MethodHandle lua_rawseti$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_rawseti",

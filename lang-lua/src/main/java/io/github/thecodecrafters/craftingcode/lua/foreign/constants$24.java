@@ -6,6 +6,8 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
 import static jdk.incubator.foreign.CLinker.*;
 class constants$24 {
 
@@ -15,7 +17,7 @@ class constants$24 {
         "()Ljdk/incubator/foreign/MemoryAddress;",
         constants$24.luaL_newstate$FUNC, false
     );
-    static final FunctionDescriptor luaL_len$FUNC = FunctionDescriptor.of(C_LONG_LONG,
+    static final FunctionDescriptor luaL_len$FUNC = FunctionDescriptor.of(lua_Integer,
         C_POINTER,
         C_INT
     );

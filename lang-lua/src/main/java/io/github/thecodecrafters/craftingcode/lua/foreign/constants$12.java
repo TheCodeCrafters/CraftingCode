@@ -6,6 +6,8 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_KContext;
 import static jdk.incubator.foreign.CLinker.*;
 class constants$12 {
 
@@ -22,7 +24,7 @@ class constants$12 {
         C_POINTER,
         C_INT,
         C_INT,
-        C_LONG,
+        lua_KContext,
         C_POINTER
     );
     static final MethodHandle lua_callk$MH = RuntimeHelper.downcallHandle(
@@ -35,7 +37,7 @@ class constants$12 {
         C_INT,
         C_INT,
         C_INT,
-        C_LONG,
+        lua_KContext,
         C_POINTER
     );
     static final MethodHandle lua_pcallk$MH = RuntimeHelper.downcallHandle(
@@ -69,7 +71,7 @@ class constants$12 {
     static final FunctionDescriptor lua_yieldk$FUNC = FunctionDescriptor.of(C_INT,
         C_POINTER,
         C_INT,
-        C_LONG,
+        lua_KContext,
         C_POINTER
     );
     static final MethodHandle lua_yieldk$MH = RuntimeHelper.downcallHandle(

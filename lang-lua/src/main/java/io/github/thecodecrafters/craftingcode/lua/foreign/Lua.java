@@ -7,6 +7,7 @@ import java.lang.invoke.MethodHandle;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
 import static jdk.incubator.foreign.MemoryAddress.NULL;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
 
 public class Lua  {
 
@@ -203,7 +204,7 @@ public class Lua  {
     }
     public static ValueLayout lua_Number = C_DOUBLE;
     public static ValueLayout lua_Integer = C_LONG_LONG;
-    public static ValueLayout lua_KContext = C_LONG;
+    public static ValueLayout lua_KContext = ADDRESS;
     public static MethodHandle lua_newstate$MH() {
         return RuntimeHelper.requireNonNull(constants$1.lua_newstate$MH,"lua_newstate");
     }
@@ -1862,8 +1863,17 @@ public class Lua  {
         return lua_getfield(L, LUA_REGISTRYINDEX(), n);
     }
     // TODO: lua_opt (function argument)
-    public static void luaL_loadbuffer(Addressable L, Addressable s, long sz, Addressable n) {
-        luaL_loadbufferx(L,s,sz,n,NULL);
+    public static int luaL_loadbuffer(Addressable L, Addressable s, long sz, Addressable n) {
+        return luaL_loadbufferx(L,s,sz,n,NULL);
+    }
+    // Generic Buffer manipulation
+    public static void luaL_addchar(MemorySegment B, byte c) {
+        if (luaL_Buffer.n$get(B) >= luaL_Buffer.size$get(B))
+            luaL_prepbuffsize((B), 1);
+        MemoryAccess.setByte(luaL_Buffer.b$get(B).addOffset((long)luaL_Buffer.n$VH().getAndAdd(B, 1L)).asSegment(1, ResourceScope.globalScope()), c);
+    }
+    public static void luaL_addsize(MemorySegment B, long s) {
+        luaL_Buffer.n$set(B, luaL_Buffer.n$get(B)+s);
     }
     // end of manually inserted macro translations
     public static MethodHandle luaL_buffinit$MH() {
@@ -1954,6 +1964,11 @@ public class Lua  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    // manually inserted macro translations
+    public static MemoryAddress luaL_prepbuffer(Addressable B) {
+        return luaL_prepbuffsize(B, LUAL_BUFFERSIZE());
+    }
+    // end of manually inserted macro translations
     public static MethodHandle eris_dump$MH() {
         return RuntimeHelper.requireNonNull(constants$26.eris_dump$MH,"eris_dump");
     }

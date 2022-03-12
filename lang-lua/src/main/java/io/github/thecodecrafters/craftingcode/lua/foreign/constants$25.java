@@ -7,6 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$25 {
 
     static final FunctionDescriptor luaL_requiref$FUNC = FunctionDescriptor.ofVoid(
@@ -31,7 +33,7 @@ class constants$25 {
     );
     static final FunctionDescriptor luaL_prepbuffsize$FUNC = FunctionDescriptor.of(C_POINTER,
         C_POINTER,
-        C_LONG
+        ADDRESS
     );
     static final MethodHandle luaL_prepbuffsize$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "luaL_prepbuffsize",
@@ -41,7 +43,7 @@ class constants$25 {
     static final FunctionDescriptor luaL_addlstring$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
         C_POINTER,
-        C_LONG
+        ADDRESS
     );
     static final MethodHandle luaL_addlstring$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "luaL_addlstring",

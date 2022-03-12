@@ -6,7 +6,12 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$7 {
 
     static final FunctionDescriptor lua_pushnil$FUNC = FunctionDescriptor.ofVoid(
@@ -19,7 +24,7 @@ class constants$7 {
     );
     static final FunctionDescriptor lua_pushnumber$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
-        C_DOUBLE
+        lua_Number
     );
     static final MethodHandle lua_pushnumber$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_pushnumber",
@@ -28,7 +33,7 @@ class constants$7 {
     );
     static final FunctionDescriptor lua_pushinteger$FUNC = FunctionDescriptor.ofVoid(
         C_POINTER,
-        C_LONG_LONG
+        lua_Integer
     );
     static final MethodHandle lua_pushinteger$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_pushinteger",
@@ -38,7 +43,7 @@ class constants$7 {
     static final FunctionDescriptor lua_pushlstring$FUNC = FunctionDescriptor.of(C_POINTER,
         C_POINTER,
         C_POINTER,
-        C_LONG
+        ADDRESS
     );
     static final MethodHandle lua_pushlstring$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_pushlstring",

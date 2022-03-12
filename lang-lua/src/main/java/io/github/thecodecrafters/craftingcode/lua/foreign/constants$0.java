@@ -6,6 +6,8 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_KContext;
 import static jdk.incubator.foreign.CLinker.*;
 class constants$0 {
 
@@ -19,7 +21,7 @@ class constants$0 {
     static final FunctionDescriptor lua_KFunction$FUNC = FunctionDescriptor.of(C_INT,
         C_POINTER,
         C_INT,
-        C_LONG
+        lua_KContext
     );
     static final MethodHandle lua_KFunction$MH = RuntimeHelper.downcallHandle(
         "(Ljdk/incubator/foreign/MemoryAddress;IJ)I",

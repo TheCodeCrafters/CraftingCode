@@ -7,12 +7,14 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$1 {
 
     static final FunctionDescriptor lua_Writer$FUNC = FunctionDescriptor.of(C_INT,
         C_POINTER,
         C_POINTER,
-        C_LONG,
+        ADDRESS,
         C_POINTER
     );
     static final MethodHandle lua_Writer$MH = RuntimeHelper.downcallHandle(
@@ -22,8 +24,8 @@ class constants$1 {
     static final FunctionDescriptor lua_Alloc$FUNC = FunctionDescriptor.of(C_POINTER,
         C_POINTER,
         C_POINTER,
-        C_LONG,
-        C_LONG
+        ADDRESS,
+        ADDRESS
     );
     static final MethodHandle lua_Alloc$MH = RuntimeHelper.downcallHandle(
         "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JJ)Ljdk/incubator/foreign/MemoryAddress;",

@@ -6,10 +6,15 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
+
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$5 {
 
-    static final FunctionDescriptor lua_tonumberx$FUNC = FunctionDescriptor.of(C_DOUBLE,
+    static final FunctionDescriptor lua_tonumberx$FUNC = FunctionDescriptor.of(lua_Number,
         C_POINTER,
         C_INT,
         C_POINTER
@@ -19,7 +24,7 @@ class constants$5 {
         "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)D",
         constants$5.lua_tonumberx$FUNC, false
     );
-    static final FunctionDescriptor lua_tointegerx$FUNC = FunctionDescriptor.of(C_LONG_LONG,
+    static final FunctionDescriptor lua_tointegerx$FUNC = FunctionDescriptor.of(lua_Integer,
         C_POINTER,
         C_INT,
         C_POINTER
@@ -48,7 +53,7 @@ class constants$5 {
         "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
         constants$5.lua_tolstring$FUNC, false
     );
-    static final FunctionDescriptor lua_rawlen$FUNC = FunctionDescriptor.of(C_LONG,
+    static final FunctionDescriptor lua_rawlen$FUNC = FunctionDescriptor.of(ADDRESS,
         C_POINTER,
         C_INT
     );

@@ -7,14 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 public class luaL_Buffer {
 
     static final MemoryLayout $struct$LAYOUT = MemoryLayout.structLayout(
         C_POINTER.withName("b"),
-        C_LONG.withName("size"),
-        C_LONG.withName("n"),
+        ADDRESS.withName("size"),
+        ADDRESS.withName("n"),
         C_POINTER.withName("L"),
-        MemoryLayout.sequenceLayout(8192, C_CHAR).withName("initb")
+        MemoryLayout.sequenceLayout(Lua.LUAL_BUFFERSIZE(), C_CHAR).withName("initb")
     ).withName("luaL_Buffer");
     public static MemoryLayout $LAYOUT() {
         return luaL_Buffer.$struct$LAYOUT;
@@ -84,7 +86,7 @@ public class luaL_Buffer {
         luaL_Buffer.L$VH.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment initb$slice(MemorySegment seg) {
-        return seg.asSlice(32, 8192);
+        return seg.asSlice(32, Lua.LUAL_BUFFERSIZE());
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

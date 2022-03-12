@@ -7,6 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$14 {
 
     static final FunctionDescriptor lua_concat$FUNC = FunctionDescriptor.ofVoid(
@@ -27,7 +29,7 @@ class constants$14 {
         "(Ljdk/incubator/foreign/MemoryAddress;I)V",
         constants$14.lua_len$FUNC, false
     );
-    static final FunctionDescriptor lua_stringtonumber$FUNC = FunctionDescriptor.of(C_LONG,
+    static final FunctionDescriptor lua_stringtonumber$FUNC = FunctionDescriptor.of(ADDRESS,
         C_POINTER,
         C_POINTER
     );

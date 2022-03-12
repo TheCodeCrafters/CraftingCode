@@ -7,6 +7,8 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.CLinker.*;
+import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
+
 class constants$23 {
 
     static final FunctionDescriptor luaL_execresult$FUNC = FunctionDescriptor.of(C_INT,
@@ -50,7 +52,7 @@ class constants$23 {
     static final FunctionDescriptor luaL_loadbufferx$FUNC = FunctionDescriptor.of(C_INT,
         C_POINTER,
         C_POINTER,
-        C_LONG,
+        ADDRESS,
         C_POINTER,
         C_POINTER
     );
