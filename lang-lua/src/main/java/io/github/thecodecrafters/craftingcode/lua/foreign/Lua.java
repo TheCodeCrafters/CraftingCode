@@ -202,9 +202,16 @@ public class Lua  {
     public static int ERIS_VERSION_NUM() {
         return (int)101L;
     }
-    public static ValueLayout lua_Number = C_DOUBLE;
-    public static ValueLayout lua_Integer = C_LONG_LONG;
-    public static ValueLayout lua_KContext = ADDRESS;
+    public static final ValueLayout lua_Number = C_DOUBLE;
+    public static final ValueLayout lua_Integer = C_LONG_LONG;
+    public static final ValueLayout size_t = C_LONG_LONG;
+    public static final ValueLayout lua_KContext = size_t;
+    public static final FunctionDescriptor lua_CFunction = constants$0.lua_CFunction$FUNC;
+    static {
+        if (C_LONG_LONG.byteSize() != C_POINTER.byteSize() || C_LONG_LONG.bitSize() != C_POINTER.bitSize()
+                || C_LONG_LONG.bitAlignment() != C_POINTER.bitAlignment() || C_LONG_LONG.byteAlignment() != C_POINTER.byteAlignment())
+            throw new AssertionError("C_POINTER should match C_LONG_LONG"); // because otherwise size_t is incorrect
+    }
     public static MethodHandle lua_newstate$MH() {
         return RuntimeHelper.requireNonNull(constants$1.lua_newstate$MH,"lua_newstate");
     }

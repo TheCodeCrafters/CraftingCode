@@ -27,6 +27,6 @@ public class LuaProvider implements LanguageProvider {
 	@NotNull
 	@Override
 	public VirtualMachine createMachine() {
-		return null;
+		return new LuaVirtualMachine();
 	}
 }
