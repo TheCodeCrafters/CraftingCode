@@ -1,7 +1,6 @@
 package io.github.thecodecrafters.craftingcode.dummy;
 
 import io.github.thecodecrafters.craftingcode.langapi.*;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,7 +9,6 @@ import java.util.Map;
 
 public class DummyContext implements Context {
 	private final Map<String, Value> values = new HashMap<>();
-	private Throwable lastException = null;
 
 	DummyContext( Map<String, Value> baseGlobals ) {
 		this.values.putAll( baseGlobals );
@@ -30,12 +28,15 @@ public class DummyContext implements Context {
 	public Value call( String name, Object... args ) throws VmException {
 		if ( values.containsKey( name ) )
 			try {
-				return values.get( name ).asCallable().invoke(args);
+				Value func;
+				if ( ( func = values.get( name ) ).isCallable() )
+					return func.asCallable().invoke(args);
+				else
+					throw new NotACallableException( name + " is not a callable!" );
 			} catch ( Exception e ) {
-				lastException = e;
 				throw new WrappedException(e);
 			}
-		throw (VmException) ( lastException = new ValueNotFoundError("Tried to get inexistant value `" + name + "`") );
+		throw new ValueNotFoundError("Tried to get inexistant value `" + name + "`");
 	}
 
 	@Override

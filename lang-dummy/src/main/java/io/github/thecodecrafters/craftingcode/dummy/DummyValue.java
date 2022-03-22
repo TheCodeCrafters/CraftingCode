@@ -73,9 +73,50 @@ public class DummyValue implements Value {
 		return (Callable) value;
 	}
 
+
 	@Override
 	public boolean isNull() {
 		return value == null;
+	}
+
+	@Override
+	public boolean isString() {
+		return value instanceof String;
+	}
+
+	@Override
+	public boolean isCharacter() {
+		return value instanceof Character;
+	}
+
+	@Override
+	public boolean isBoolean() {
+		return value instanceof Boolean;
+	}
+
+	@Override
+	public boolean isDottedNumber() {
+		return value instanceof Double || value instanceof Float;
+	}
+
+	@Override
+	public boolean isUndottedNumber() {
+		return value instanceof Short || value instanceof Integer;
+	}
+
+	@Override
+	public boolean isMap() {
+		return value instanceof Map<?,?>;
+	}
+
+	@Override
+	public boolean isList() {
+		return value instanceof List<?>;
+	}
+
+	@Override
+	public boolean isCallable() {
+		return value instanceof Callable;
 	}
 
 

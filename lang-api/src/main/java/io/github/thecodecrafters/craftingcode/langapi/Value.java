@@ -20,4 +20,12 @@ public interface Value {
 	Callable asCallable();
 
 	boolean isNull();
+	boolean isString();
+	boolean isCharacter();
+	boolean isBoolean();
+	boolean isDottedNumber();  // TODO: Better names
+	boolean isUndottedNumber();
+	boolean isMap();
+	boolean isList();
+	boolean isCallable();
 }
