@@ -1,5 +1,7 @@
 package io.github.thecodecrafters.craftingcode.langapi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.invoke.MethodHandle;
 import java.util.Map;
 import java.util.UUID;
@@ -16,38 +18,38 @@ public interface VirtualMachine {
 	 *  - Just ignore classes and do nothing
 	 * @param clazz class to register
 	 */
-	void registerClass( Class<?> clazz );
+	void registerClass( @NotNull Class<?> clazz );
 
 	/**
 	 * Register a global function that may be called in the language without importing anything.
 	 * @param name name the function will go by in the vm
 	 * @param handle handle of the function
 	 */
-	void registerFunction( String name, MethodHandle handle );
+	void registerFunction( @NotNull String name, @NotNull MethodHandle handle );
 
 	/**
 	 * Register a module that can be imported by the language.
 	 * A module for java is just a map of classes, functions or values that is indexed by Strings
 	 * @param module map of values to be registered as module
 	 */
-	void registerModule( Map<String, Value> module );
+	void registerModule( @NotNull Map<String, Value> module );
 
 	/**
 	 * Get or create a context for a specific UUID
 	 * @param uuid of the context
 	 * @return a new Context implementation or an existing one
 	 */
-	Context getContext(UUID uuid);
+	@NotNull Context getContext(UUID uuid);
 
 	/**
 	 * Delete the context specified by this uuid
 	 * @param uuid of the context to delete
 	 */
-	void deleteContext(UUID uuid);
+	void deleteContext(@NotNull UUID uuid);
 
 	/**
 	 * Getter for the provider that created this VirtualMachine implementation.
 	 * @return the owning language provider
 	 */
-	LanguageProvider getProvider();
+	@NotNull LanguageProvider getProvider();
 }

@@ -31,3 +31,5 @@ bin/
 # fabric
 
 run/
+
+hs_err_*.log

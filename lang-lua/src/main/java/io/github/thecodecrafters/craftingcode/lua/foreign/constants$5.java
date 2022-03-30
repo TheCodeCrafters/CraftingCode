@@ -7,8 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 
-import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
-import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.*;
 import static jdk.incubator.foreign.CLinker.*;
 import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
 
@@ -53,7 +52,7 @@ class constants$5 {
         "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;",
         constants$5.lua_tolstring$FUNC, false
     );
-    static final FunctionDescriptor lua_rawlen$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor lua_rawlen$FUNC = FunctionDescriptor.of(size_t,
         C_POINTER,
         C_INT
     );

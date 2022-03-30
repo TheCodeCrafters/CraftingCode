@@ -1,6 +1,7 @@
 package io.github.thecodecrafters.craftingcode.dummy;
 
 import io.github.thecodecrafters.craftingcode.langapi.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,17 +16,17 @@ public class DummyContext implements Context {
 	}
 
 	@Override
-	public Value getValue(String name) {
+	public @NotNull Value getValue(@NotNull String name) {
 		return values.getOrDefault( name, DummyValue.ofNull() );
 	}
 
 	@Override
-	public void setValue(String name, Value value) {
+	public void setValue(@NotNull String name, @NotNull Value value) {
 		values.put( name, value );
 	}
 
 	@Override
-	public Value call( String name, Object... args ) throws VmException {
+	public @NotNull Value call(@NotNull String name, Object... args ) throws VmException {
 		if ( values.containsKey( name ) )
 			try {
 				Value func;
@@ -40,12 +41,12 @@ public class DummyContext implements Context {
 	}
 
 	@Override
-	public void saveState(OutputStream stream) {
+	public void saveState(@NotNull OutputStream stream) {
 		// no op
 	}
 
 	@Override
-	public void loadState(InputStream stream) {
+	public void loadState(@NotNull InputStream stream) {
 		// no op
 	}
 

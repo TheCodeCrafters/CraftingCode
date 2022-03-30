@@ -31,7 +31,7 @@ public class CraftingCodeModImpl implements Mod {
 	}
 
 	@Override
-	public @NotNull NativeImageBackedTexture getIcon(ModIconHandler iconHandler, int i) {
+	public /*@NotNull*/ NativeImageBackedTexture getIcon(ModIconHandler iconHandler, int i) {
 		return null;
 	}
 

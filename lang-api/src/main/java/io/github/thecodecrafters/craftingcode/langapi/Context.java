@@ -1,5 +1,7 @@
 package io.github.thecodecrafters.craftingcode.langapi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -11,10 +13,10 @@ import java.io.OutputStream;
  *  - Call a global function defined in the state
  */
 public interface Context extends AutoCloseable {
-	Value getValue( String name );
-	void setValue( String name, Value value );
-	Value call( String name, Object... args ) throws VmException;
+	@NotNull Value getValue( @NotNull String name );
+	void setValue( @NotNull String name, @NotNull Value value );
+	@NotNull Value call( @NotNull String name, Object... args ) throws VmException;
 
-	void saveState( OutputStream stream );
-	void loadState( InputStream stream );
+	void saveState( @NotNull OutputStream stream );
+	void loadState( @NotNull InputStream stream );
 }

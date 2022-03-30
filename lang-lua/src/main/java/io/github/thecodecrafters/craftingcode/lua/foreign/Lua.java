@@ -5,9 +5,11 @@ package io.github.thecodecrafters.craftingcode.lua.foreign;
 import java.lang.invoke.MethodHandle;
 
 import jdk.incubator.foreign.*;
+
+import org.jetbrains.annotations.NotNull;
+
 import static jdk.incubator.foreign.CLinker.*;
 import static jdk.incubator.foreign.MemoryAddress.NULL;
-import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
 
 public class Lua  {
 
@@ -226,7 +228,7 @@ public class Lua  {
     public static MethodHandle lua_close$MH() {
         return RuntimeHelper.requireNonNull(constants$1.lua_close$MH,"lua_close");
     }
-    public static void lua_close ( Addressable L) {
+    public static void lua_close ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$1.lua_close$MH, "lua_close");
         try {
             mh$.invokeExact(L.address());
@@ -237,7 +239,7 @@ public class Lua  {
     public static MethodHandle lua_newthread$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_newthread$MH,"lua_newthread");
     }
-    public static MemoryAddress lua_newthread ( Addressable L) {
+    public static MemoryAddress lua_newthread ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_newthread$MH, "lua_newthread");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address());
@@ -248,7 +250,7 @@ public class Lua  {
     public static MethodHandle lua_atpanic$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_atpanic$MH,"lua_atpanic");
     }
-    public static MemoryAddress lua_atpanic ( Addressable L,  Addressable panicf) {
+    public static MemoryAddress lua_atpanic ( @NotNull Addressable L,  Addressable panicf) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_atpanic$MH, "lua_atpanic");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), panicf.address());
@@ -259,7 +261,7 @@ public class Lua  {
     public static MethodHandle lua_version$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_version$MH,"lua_version");
     }
-    public static MemoryAddress lua_version ( Addressable L) {
+    public static MemoryAddress lua_version ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_version$MH, "lua_version");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address());
@@ -270,7 +272,7 @@ public class Lua  {
     public static MethodHandle lua_absindex$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_absindex$MH,"lua_absindex");
     }
-    public static int lua_absindex ( Addressable L,  int idx) {
+    public static int lua_absindex ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_absindex$MH, "lua_absindex");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -281,7 +283,7 @@ public class Lua  {
     public static MethodHandle lua_gettop$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_gettop$MH,"lua_gettop");
     }
-    public static int lua_gettop ( Addressable L) {
+    public static int lua_gettop ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_gettop$MH, "lua_gettop");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -292,7 +294,7 @@ public class Lua  {
     public static MethodHandle lua_settop$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_settop$MH,"lua_settop");
     }
-    public static void lua_settop ( Addressable L,  int idx) {
+    public static void lua_settop ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_settop$MH, "lua_settop");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -303,7 +305,7 @@ public class Lua  {
     public static MethodHandle lua_pushvalue$MH() {
         return RuntimeHelper.requireNonNull(constants$3.lua_pushvalue$MH,"lua_pushvalue");
     }
-    public static void lua_pushvalue ( Addressable L,  int idx) {
+    public static void lua_pushvalue ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.lua_pushvalue$MH, "lua_pushvalue");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -314,7 +316,7 @@ public class Lua  {
     public static MethodHandle lua_rotate$MH() {
         return RuntimeHelper.requireNonNull(constants$3.lua_rotate$MH,"lua_rotate");
     }
-    public static void lua_rotate ( Addressable L,  int idx,  int n) {
+    public static void lua_rotate ( @NotNull Addressable L,  int idx,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.lua_rotate$MH, "lua_rotate");
         try {
             mh$.invokeExact(L.address(), idx, n);
@@ -325,7 +327,7 @@ public class Lua  {
     public static MethodHandle lua_copy$MH() {
         return RuntimeHelper.requireNonNull(constants$3.lua_copy$MH,"lua_copy");
     }
-    public static void lua_copy ( Addressable L,  int fromidx,  int toidx) {
+    public static void lua_copy ( @NotNull Addressable L,  int fromidx,  int toidx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.lua_copy$MH, "lua_copy");
         try {
             mh$.invokeExact(L.address(), fromidx, toidx);
@@ -336,7 +338,7 @@ public class Lua  {
     public static MethodHandle lua_checkstack$MH() {
         return RuntimeHelper.requireNonNull(constants$3.lua_checkstack$MH,"lua_checkstack");
     }
-    public static int lua_checkstack ( Addressable L,  int n) {
+    public static int lua_checkstack ( @NotNull Addressable L,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.lua_checkstack$MH, "lua_checkstack");
         try {
             return (int)mh$.invokeExact(L.address(), n);
@@ -358,7 +360,7 @@ public class Lua  {
     public static MethodHandle lua_isnumber$MH() {
         return RuntimeHelper.requireNonNull(constants$3.lua_isnumber$MH,"lua_isnumber");
     }
-    public static int lua_isnumber ( Addressable L,  int idx) {
+    public static int lua_isnumber ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.lua_isnumber$MH, "lua_isnumber");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -369,7 +371,7 @@ public class Lua  {
     public static MethodHandle lua_isstring$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_isstring$MH,"lua_isstring");
     }
-    public static int lua_isstring ( Addressable L,  int idx) {
+    public static int lua_isstring ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_isstring$MH, "lua_isstring");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -380,7 +382,7 @@ public class Lua  {
     public static MethodHandle lua_iscfunction$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_iscfunction$MH,"lua_iscfunction");
     }
-    public static int lua_iscfunction ( Addressable L,  int idx) {
+    public static int lua_iscfunction ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_iscfunction$MH, "lua_iscfunction");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -391,7 +393,7 @@ public class Lua  {
     public static MethodHandle lua_isinteger$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_isinteger$MH,"lua_isinteger");
     }
-    public static int lua_isinteger ( Addressable L,  int idx) {
+    public static int lua_isinteger ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_isinteger$MH, "lua_isinteger");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -402,7 +404,7 @@ public class Lua  {
     public static MethodHandle lua_isuserdata$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_isuserdata$MH,"lua_isuserdata");
     }
-    public static int lua_isuserdata ( Addressable L,  int idx) {
+    public static int lua_isuserdata ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_isuserdata$MH, "lua_isuserdata");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -413,7 +415,7 @@ public class Lua  {
     public static MethodHandle lua_type$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_type$MH,"lua_type");
     }
-    public static int lua_type ( Addressable L,  int idx) {
+    public static int lua_type ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_type$MH, "lua_type");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -424,7 +426,7 @@ public class Lua  {
     public static MethodHandle lua_typename$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_typename$MH,"lua_typename");
     }
-    public static MemoryAddress lua_typename ( Addressable L,  int tp) {
+    public static MemoryAddress lua_typename ( @NotNull Addressable L,  int tp) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_typename$MH, "lua_typename");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), tp);
@@ -435,7 +437,7 @@ public class Lua  {
     public static MethodHandle lua_tonumberx$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_tonumberx$MH,"lua_tonumberx");
     }
-    public static double lua_tonumberx ( Addressable L,  int idx,  Addressable isnum) {
+    public static double lua_tonumberx ( @NotNull Addressable L,  int idx,  Addressable isnum) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_tonumberx$MH, "lua_tonumberx");
         try {
             return (double)mh$.invokeExact(L.address(), idx, isnum.address());
@@ -446,7 +448,7 @@ public class Lua  {
     public static MethodHandle lua_tointegerx$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_tointegerx$MH,"lua_tointegerx");
     }
-    public static long lua_tointegerx ( Addressable L,  int idx,  Addressable isnum) {
+    public static long lua_tointegerx ( @NotNull Addressable L,  int idx,  Addressable isnum) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_tointegerx$MH, "lua_tointegerx");
         try {
             return (long)mh$.invokeExact(L.address(), idx, isnum.address());
@@ -457,7 +459,7 @@ public class Lua  {
     public static MethodHandle lua_toboolean$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_toboolean$MH,"lua_toboolean");
     }
-    public static int lua_toboolean ( Addressable L,  int idx) {
+    public static int lua_toboolean ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_toboolean$MH, "lua_toboolean");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -468,7 +470,7 @@ public class Lua  {
     public static MethodHandle lua_tolstring$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_tolstring$MH,"lua_tolstring");
     }
-    public static MemoryAddress lua_tolstring ( Addressable L,  int idx,  Addressable len) {
+    public static MemoryAddress lua_tolstring ( @NotNull Addressable L,  int idx,  Addressable len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_tolstring$MH, "lua_tolstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx, len.address());
@@ -479,7 +481,7 @@ public class Lua  {
     public static MethodHandle lua_rawlen$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_rawlen$MH,"lua_rawlen");
     }
-    public static long lua_rawlen ( Addressable L,  int idx) {
+    public static long lua_rawlen ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_rawlen$MH, "lua_rawlen");
         try {
             return (long)mh$.invokeExact(L.address(), idx);
@@ -490,7 +492,7 @@ public class Lua  {
     public static MethodHandle lua_tocfunction$MH() {
         return RuntimeHelper.requireNonNull(constants$5.lua_tocfunction$MH,"lua_tocfunction");
     }
-    public static MemoryAddress lua_tocfunction ( Addressable L,  int idx) {
+    public static MemoryAddress lua_tocfunction ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.lua_tocfunction$MH, "lua_tocfunction");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx);
@@ -501,7 +503,7 @@ public class Lua  {
     public static MethodHandle lua_touserdata$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_touserdata$MH,"lua_touserdata");
     }
-    public static MemoryAddress lua_touserdata ( Addressable L,  int idx) {
+    public static MemoryAddress lua_touserdata ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_touserdata$MH, "lua_touserdata");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx);
@@ -512,7 +514,7 @@ public class Lua  {
     public static MethodHandle lua_tothread$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_tothread$MH,"lua_tothread");
     }
-    public static MemoryAddress lua_tothread ( Addressable L,  int idx) {
+    public static MemoryAddress lua_tothread ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_tothread$MH, "lua_tothread");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx);
@@ -523,7 +525,7 @@ public class Lua  {
     public static MethodHandle lua_topointer$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_topointer$MH,"lua_topointer");
     }
-    public static MemoryAddress lua_topointer ( Addressable L,  int idx) {
+    public static MemoryAddress lua_topointer ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_topointer$MH, "lua_topointer");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx);
@@ -534,7 +536,7 @@ public class Lua  {
     public static MethodHandle lua_arith$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_arith$MH,"lua_arith");
     }
-    public static void lua_arith ( Addressable L,  int op) {
+    public static void lua_arith ( @NotNull Addressable L,  int op) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_arith$MH, "lua_arith");
         try {
             mh$.invokeExact(L.address(), op);
@@ -545,7 +547,7 @@ public class Lua  {
     public static MethodHandle lua_rawequal$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_rawequal$MH,"lua_rawequal");
     }
-    public static int lua_rawequal ( Addressable L,  int idx1,  int idx2) {
+    public static int lua_rawequal ( @NotNull Addressable L,  int idx1,  int idx2) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_rawequal$MH, "lua_rawequal");
         try {
             return (int)mh$.invokeExact(L.address(), idx1, idx2);
@@ -556,7 +558,7 @@ public class Lua  {
     public static MethodHandle lua_compare$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_compare$MH,"lua_compare");
     }
-    public static int lua_compare ( Addressable L,  int idx1,  int idx2,  int op) {
+    public static int lua_compare ( @NotNull Addressable L,  int idx1,  int idx2,  int op) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_compare$MH, "lua_compare");
         try {
             return (int)mh$.invokeExact(L.address(), idx1, idx2, op);
@@ -567,7 +569,7 @@ public class Lua  {
     public static MethodHandle lua_pushnil$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushnil$MH,"lua_pushnil");
     }
-    public static void lua_pushnil ( Addressable L) {
+    public static void lua_pushnil ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushnil$MH, "lua_pushnil");
         try {
             mh$.invokeExact(L.address());
@@ -578,7 +580,7 @@ public class Lua  {
     public static MethodHandle lua_pushnumber$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushnumber$MH,"lua_pushnumber");
     }
-    public static void lua_pushnumber ( Addressable L,  double n) {
+    public static void lua_pushnumber ( @NotNull Addressable L,  double n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushnumber$MH, "lua_pushnumber");
         try {
             mh$.invokeExact(L.address(), n);
@@ -589,7 +591,7 @@ public class Lua  {
     public static MethodHandle lua_pushinteger$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushinteger$MH,"lua_pushinteger");
     }
-    public static void lua_pushinteger ( Addressable L,  long n) {
+    public static void lua_pushinteger ( @NotNull Addressable L,  long n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushinteger$MH, "lua_pushinteger");
         try {
             mh$.invokeExact(L.address(), n);
@@ -600,7 +602,7 @@ public class Lua  {
     public static MethodHandle lua_pushlstring$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushlstring$MH,"lua_pushlstring");
     }
-    public static MemoryAddress lua_pushlstring ( Addressable L,  Addressable s,  long len) {
+    public static MemoryAddress lua_pushlstring ( @NotNull Addressable L,  Addressable s,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushlstring$MH, "lua_pushlstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), s.address(), len);
@@ -611,7 +613,7 @@ public class Lua  {
     public static MethodHandle lua_pushstring$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushstring$MH,"lua_pushstring");
     }
-    public static MemoryAddress lua_pushstring ( Addressable L,  Addressable s) {
+    public static MemoryAddress lua_pushstring ( @NotNull Addressable L,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushstring$MH, "lua_pushstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), s.address());
@@ -622,7 +624,7 @@ public class Lua  {
     public static MethodHandle lua_pushvfstring$MH() {
         return RuntimeHelper.requireNonNull(constants$7.lua_pushvfstring$MH,"lua_pushvfstring");
     }
-    public static MemoryAddress lua_pushvfstring ( Addressable L,  Addressable fmt,  Addressable argp) {
+    public static MemoryAddress lua_pushvfstring ( @NotNull Addressable L,  Addressable fmt,  Addressable argp) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.lua_pushvfstring$MH, "lua_pushvfstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), fmt.address(), argp.address());
@@ -633,7 +635,7 @@ public class Lua  {
     public static MethodHandle lua_pushfstring$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_pushfstring$MH,"lua_pushfstring");
     }
-    public static MemoryAddress lua_pushfstring ( Addressable L,  Addressable fmt, Object... x2) {
+    public static MemoryAddress lua_pushfstring ( @NotNull Addressable L,  Addressable fmt, Object... x2) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_pushfstring$MH, "lua_pushfstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), fmt.address(), x2);
@@ -644,7 +646,7 @@ public class Lua  {
     public static MethodHandle lua_pushcclosure$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_pushcclosure$MH,"lua_pushcclosure");
     }
-    public static void lua_pushcclosure ( Addressable L,  Addressable fn,  int n) {
+    public static void lua_pushcclosure ( @NotNull Addressable L,  Addressable fn,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_pushcclosure$MH, "lua_pushcclosure");
         try {
             mh$.invokeExact(L.address(), fn.address(), n);
@@ -655,7 +657,7 @@ public class Lua  {
     public static MethodHandle lua_pushboolean$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_pushboolean$MH,"lua_pushboolean");
     }
-    public static void lua_pushboolean ( Addressable L,  int b) {
+    public static void lua_pushboolean ( @NotNull Addressable L,  int b) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_pushboolean$MH, "lua_pushboolean");
         try {
             mh$.invokeExact(L.address(), b);
@@ -666,7 +668,7 @@ public class Lua  {
     public static MethodHandle lua_pushlightuserdata$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_pushlightuserdata$MH,"lua_pushlightuserdata");
     }
-    public static void lua_pushlightuserdata ( Addressable L,  Addressable p) {
+    public static void lua_pushlightuserdata ( @NotNull Addressable L,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_pushlightuserdata$MH, "lua_pushlightuserdata");
         try {
             mh$.invokeExact(L.address(), p.address());
@@ -677,7 +679,7 @@ public class Lua  {
     public static MethodHandle lua_pushthread$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_pushthread$MH,"lua_pushthread");
     }
-    public static int lua_pushthread ( Addressable L) {
+    public static int lua_pushthread ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_pushthread$MH, "lua_pushthread");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -688,7 +690,7 @@ public class Lua  {
     public static MethodHandle lua_getglobal$MH() {
         return RuntimeHelper.requireNonNull(constants$8.lua_getglobal$MH,"lua_getglobal");
     }
-    public static int lua_getglobal ( Addressable L,  Addressable name) {
+    public static int lua_getglobal ( @NotNull Addressable L,  Addressable name) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.lua_getglobal$MH, "lua_getglobal");
         try {
             return (int)mh$.invokeExact(L.address(), name.address());
@@ -699,7 +701,7 @@ public class Lua  {
     public static MethodHandle lua_gettable$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_gettable$MH,"lua_gettable");
     }
-    public static int lua_gettable ( Addressable L,  int idx) {
+    public static int lua_gettable ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_gettable$MH, "lua_gettable");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -710,7 +712,7 @@ public class Lua  {
     public static MethodHandle lua_getfield$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_getfield$MH,"lua_getfield");
     }
-    public static int lua_getfield ( Addressable L,  int idx,  Addressable k) {
+    public static int lua_getfield ( @NotNull Addressable L,  int idx,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_getfield$MH, "lua_getfield");
         try {
             return (int)mh$.invokeExact(L.address(), idx, k.address());
@@ -721,7 +723,7 @@ public class Lua  {
     public static MethodHandle lua_geti$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_geti$MH,"lua_geti");
     }
-    public static int lua_geti ( Addressable L,  int idx,  long n) {
+    public static int lua_geti ( @NotNull Addressable L,  int idx,  long n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_geti$MH, "lua_geti");
         try {
             return (int)mh$.invokeExact(L.address(), idx, n);
@@ -732,7 +734,7 @@ public class Lua  {
     public static MethodHandle lua_rawget$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_rawget$MH,"lua_rawget");
     }
-    public static int lua_rawget ( Addressable L,  int idx) {
+    public static int lua_rawget ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_rawget$MH, "lua_rawget");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -743,7 +745,7 @@ public class Lua  {
     public static MethodHandle lua_rawgeti$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_rawgeti$MH,"lua_rawgeti");
     }
-    public static int lua_rawgeti ( Addressable L,  int idx,  long n) {
+    public static int lua_rawgeti ( @NotNull Addressable L,  int idx,  long n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_rawgeti$MH, "lua_rawgeti");
         try {
             return (int)mh$.invokeExact(L.address(), idx, n);
@@ -754,7 +756,7 @@ public class Lua  {
     public static MethodHandle lua_rawgetp$MH() {
         return RuntimeHelper.requireNonNull(constants$9.lua_rawgetp$MH,"lua_rawgetp");
     }
-    public static int lua_rawgetp ( Addressable L,  int idx,  Addressable p) {
+    public static int lua_rawgetp ( @NotNull Addressable L,  int idx,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.lua_rawgetp$MH, "lua_rawgetp");
         try {
             return (int)mh$.invokeExact(L.address(), idx, p.address());
@@ -765,7 +767,7 @@ public class Lua  {
     public static MethodHandle lua_createtable$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_createtable$MH,"lua_createtable");
     }
-    public static void lua_createtable ( Addressable L,  int narr,  int nrec) {
+    public static void lua_createtable ( @NotNull Addressable L,  int narr,  int nrec) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_createtable$MH, "lua_createtable");
         try {
             mh$.invokeExact(L.address(), narr, nrec);
@@ -776,7 +778,7 @@ public class Lua  {
     public static MethodHandle lua_newuserdata$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_newuserdata$MH,"lua_newuserdata");
     }
-    public static MemoryAddress lua_newuserdata ( Addressable L,  long sz) {
+    public static MemoryAddress lua_newuserdata ( @NotNull Addressable L,  long sz) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_newuserdata$MH, "lua_newuserdata");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), sz);
@@ -787,7 +789,7 @@ public class Lua  {
     public static MethodHandle lua_getmetatable$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_getmetatable$MH,"lua_getmetatable");
     }
-    public static int lua_getmetatable ( Addressable L,  int objindex) {
+    public static int lua_getmetatable ( @NotNull Addressable L,  int objindex) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_getmetatable$MH, "lua_getmetatable");
         try {
             return (int)mh$.invokeExact(L.address(), objindex);
@@ -798,7 +800,7 @@ public class Lua  {
     public static MethodHandle lua_getuservalue$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_getuservalue$MH,"lua_getuservalue");
     }
-    public static int lua_getuservalue ( Addressable L,  int idx) {
+    public static int lua_getuservalue ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_getuservalue$MH, "lua_getuservalue");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -809,7 +811,7 @@ public class Lua  {
     public static MethodHandle lua_setglobal$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_setglobal$MH,"lua_setglobal");
     }
-    public static void lua_setglobal ( Addressable L,  Addressable name) {
+    public static void lua_setglobal ( @NotNull Addressable L,  Addressable name) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_setglobal$MH, "lua_setglobal");
         try {
             mh$.invokeExact(L.address(), name.address());
@@ -820,7 +822,7 @@ public class Lua  {
     public static MethodHandle lua_settable$MH() {
         return RuntimeHelper.requireNonNull(constants$10.lua_settable$MH,"lua_settable");
     }
-    public static void lua_settable ( Addressable L,  int idx) {
+    public static void lua_settable ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.lua_settable$MH, "lua_settable");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -831,7 +833,7 @@ public class Lua  {
     public static MethodHandle lua_setfield$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_setfield$MH,"lua_setfield");
     }
-    public static void lua_setfield ( Addressable L,  int idx,  Addressable k) {
+    public static void lua_setfield ( @NotNull Addressable L,  int idx,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_setfield$MH, "lua_setfield");
         try {
             mh$.invokeExact(L.address(), idx, k.address());
@@ -842,7 +844,7 @@ public class Lua  {
     public static MethodHandle lua_seti$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_seti$MH,"lua_seti");
     }
-    public static void lua_seti ( Addressable L,  int idx,  long n) {
+    public static void lua_seti ( @NotNull Addressable L,  int idx,  long n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_seti$MH, "lua_seti");
         try {
             mh$.invokeExact(L.address(), idx, n);
@@ -853,7 +855,7 @@ public class Lua  {
     public static MethodHandle lua_rawset$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_rawset$MH,"lua_rawset");
     }
-    public static void lua_rawset ( Addressable L,  int idx) {
+    public static void lua_rawset ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_rawset$MH, "lua_rawset");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -864,7 +866,7 @@ public class Lua  {
     public static MethodHandle lua_rawseti$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_rawseti$MH,"lua_rawseti");
     }
-    public static void lua_rawseti ( Addressable L,  int idx,  long n) {
+    public static void lua_rawseti ( @NotNull Addressable L,  int idx,  long n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_rawseti$MH, "lua_rawseti");
         try {
             mh$.invokeExact(L.address(), idx, n);
@@ -875,7 +877,7 @@ public class Lua  {
     public static MethodHandle lua_rawsetp$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_rawsetp$MH,"lua_rawsetp");
     }
-    public static void lua_rawsetp ( Addressable L,  int idx,  Addressable p) {
+    public static void lua_rawsetp ( @NotNull Addressable L,  int idx,  Addressable p) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_rawsetp$MH, "lua_rawsetp");
         try {
             mh$.invokeExact(L.address(), idx, p.address());
@@ -886,7 +888,7 @@ public class Lua  {
     public static MethodHandle lua_setmetatable$MH() {
         return RuntimeHelper.requireNonNull(constants$11.lua_setmetatable$MH,"lua_setmetatable");
     }
-    public static int lua_setmetatable ( Addressable L,  int objindex) {
+    public static int lua_setmetatable ( @NotNull Addressable L,  int objindex) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.lua_setmetatable$MH, "lua_setmetatable");
         try {
             return (int)mh$.invokeExact(L.address(), objindex);
@@ -897,7 +899,7 @@ public class Lua  {
     public static MethodHandle lua_setuservalue$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_setuservalue$MH,"lua_setuservalue");
     }
-    public static void lua_setuservalue ( Addressable L,  int idx) {
+    public static void lua_setuservalue ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_setuservalue$MH, "lua_setuservalue");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -908,7 +910,7 @@ public class Lua  {
     public static MethodHandle lua_callk$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_callk$MH,"lua_callk");
     }
-    public static void lua_callk ( Addressable L,  int nargs,  int nresults,  long ctx,  Addressable k) {
+    public static void lua_callk ( @NotNull Addressable L,  int nargs,  int nresults,  long ctx,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_callk$MH, "lua_callk");
         try {
             mh$.invokeExact(L.address(), nargs, nresults, ctx, k.address());
@@ -917,14 +919,14 @@ public class Lua  {
         }
     }
     // manually inserted macro translations
-    public static void lua_call(Addressable L, int n, int r) {
+    public static void lua_call(@NotNull Addressable L, int n, int r) {
         lua_callk(L, n, r, 0, NULL);
     }
     // end of manually inserted macro translations
     public static MethodHandle lua_pcallk$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_pcallk$MH,"lua_pcallk");
     }
-    public static int lua_pcallk ( Addressable L,  int nargs,  int nresults,  int errfunc,  long ctx,  Addressable k) {
+    public static int lua_pcallk ( @NotNull Addressable L,  int nargs,  int nresults,  int errfunc,  long ctx,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_pcallk$MH, "lua_pcallk");
         try {
             return (int)mh$.invokeExact(L.address(), nargs, nresults, errfunc, ctx, k.address());
@@ -933,14 +935,14 @@ public class Lua  {
         }
     }
     // manually inserted macro translations
-    public static int lua_pcall(Addressable L, int n, int r, int f) {
+    public static int lua_pcall(@NotNull Addressable L, int n, int r, int f) {
         return lua_pcallk(L, n, r, f, 0, NULL);
     }
     // end of manually inserted macro translations
     public static MethodHandle lua_load$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_load$MH,"lua_load");
     }
-    public static int lua_load ( Addressable L,  Addressable reader,  Addressable dt,  Addressable chunkname,  Addressable mode) {
+    public static int lua_load ( @NotNull Addressable L,  Addressable reader,  Addressable dt,  Addressable chunkname,  Addressable mode) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_load$MH, "lua_load");
         try {
             return (int)mh$.invokeExact(L.address(), reader.address(), dt.address(), chunkname.address(), mode.address());
@@ -951,7 +953,7 @@ public class Lua  {
     public static MethodHandle lua_dump$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_dump$MH,"lua_dump");
     }
-    public static int lua_dump ( Addressable L,  Addressable writer,  Addressable data,  int strip) {
+    public static int lua_dump ( @NotNull Addressable L,  Addressable writer,  Addressable data,  int strip) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_dump$MH, "lua_dump");
         try {
             return (int)mh$.invokeExact(L.address(), writer.address(), data.address(), strip);
@@ -962,7 +964,7 @@ public class Lua  {
     public static MethodHandle lua_yieldk$MH() {
         return RuntimeHelper.requireNonNull(constants$12.lua_yieldk$MH,"lua_yieldk");
     }
-    public static int lua_yieldk ( Addressable L,  int nresults,  long ctx,  Addressable k) {
+    public static int lua_yieldk ( @NotNull Addressable L,  int nresults,  long ctx,  Addressable k) {
         var mh$ = RuntimeHelper.requireNonNull(constants$12.lua_yieldk$MH, "lua_yieldk");
         try {
             return (int)mh$.invokeExact(L.address(), nresults, ctx, k.address());
@@ -973,7 +975,7 @@ public class Lua  {
     public static MethodHandle lua_resume$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_resume$MH,"lua_resume");
     }
-    public static int lua_resume ( Addressable L,  Addressable from,  int narg) {
+    public static int lua_resume ( @NotNull Addressable L,  Addressable from,  int narg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_resume$MH, "lua_resume");
         try {
             return (int)mh$.invokeExact(L.address(), from.address(), narg);
@@ -984,7 +986,7 @@ public class Lua  {
     public static MethodHandle lua_status$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_status$MH,"lua_status");
     }
-    public static int lua_status ( Addressable L) {
+    public static int lua_status ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_status$MH, "lua_status");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -995,7 +997,7 @@ public class Lua  {
     public static MethodHandle lua_isyieldable$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_isyieldable$MH,"lua_isyieldable");
     }
-    public static int lua_isyieldable ( Addressable L) {
+    public static int lua_isyieldable ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_isyieldable$MH, "lua_isyieldable");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1004,14 +1006,14 @@ public class Lua  {
         }
     }
     // manually inserted macro translations
-    public static void lua_yield(Addressable L, int n) {
+    public static void lua_yield(@NotNull Addressable L, int n) {
         lua_yieldk(L, n, 0, NULL);
     }
     // end of manually inserted macro translations
     public static MethodHandle lua_gc$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_gc$MH,"lua_gc");
     }
-    public static int lua_gc ( Addressable L,  int what,  int data) {
+    public static int lua_gc ( @NotNull Addressable L,  int what,  int data) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_gc$MH, "lua_gc");
         try {
             return (int)mh$.invokeExact(L.address(), what, data);
@@ -1022,7 +1024,7 @@ public class Lua  {
     public static MethodHandle lua_error$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_error$MH,"lua_error");
     }
-    public static int lua_error ( Addressable L) {
+    public static int lua_error ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_error$MH, "lua_error");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1033,7 +1035,7 @@ public class Lua  {
     public static MethodHandle lua_next$MH() {
         return RuntimeHelper.requireNonNull(constants$13.lua_next$MH,"lua_next");
     }
-    public static int lua_next ( Addressable L,  int idx) {
+    public static int lua_next ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.lua_next$MH, "lua_next");
         try {
             return (int)mh$.invokeExact(L.address(), idx);
@@ -1044,7 +1046,7 @@ public class Lua  {
     public static MethodHandle lua_concat$MH() {
         return RuntimeHelper.requireNonNull(constants$14.lua_concat$MH,"lua_concat");
     }
-    public static void lua_concat ( Addressable L,  int n) {
+    public static void lua_concat ( @NotNull Addressable L,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.lua_concat$MH, "lua_concat");
         try {
             mh$.invokeExact(L.address(), n);
@@ -1055,7 +1057,7 @@ public class Lua  {
     public static MethodHandle lua_len$MH() {
         return RuntimeHelper.requireNonNull(constants$14.lua_len$MH,"lua_len");
     }
-    public static void lua_len ( Addressable L,  int idx) {
+    public static void lua_len ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.lua_len$MH, "lua_len");
         try {
             mh$.invokeExact(L.address(), idx);
@@ -1066,7 +1068,7 @@ public class Lua  {
     public static MethodHandle lua_stringtonumber$MH() {
         return RuntimeHelper.requireNonNull(constants$14.lua_stringtonumber$MH,"lua_stringtonumber");
     }
-    public static long lua_stringtonumber ( Addressable L,  Addressable s) {
+    public static long lua_stringtonumber ( @NotNull Addressable L,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.lua_stringtonumber$MH, "lua_stringtonumber");
         try {
             return (long)mh$.invokeExact(L.address(), s.address());
@@ -1077,7 +1079,7 @@ public class Lua  {
     public static MethodHandle lua_getallocf$MH() {
         return RuntimeHelper.requireNonNull(constants$14.lua_getallocf$MH,"lua_getallocf");
     }
-    public static MemoryAddress lua_getallocf ( Addressable L,  Addressable ud) {
+    public static MemoryAddress lua_getallocf ( @NotNull Addressable L,  Addressable ud) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.lua_getallocf$MH, "lua_getallocf");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), ud.address());
@@ -1088,7 +1090,7 @@ public class Lua  {
     public static MethodHandle lua_setallocf$MH() {
         return RuntimeHelper.requireNonNull(constants$14.lua_setallocf$MH,"lua_setallocf");
     }
-    public static void lua_setallocf ( Addressable L,  Addressable f,  Addressable ud) {
+    public static void lua_setallocf ( @NotNull Addressable L,  Addressable f,  Addressable ud) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.lua_setallocf$MH, "lua_setallocf");
         try {
             mh$.invokeExact(L.address(), f.address(), ud.address());
@@ -1098,71 +1100,71 @@ public class Lua  {
     }
     // manually inserted macro translations
     // some useful macros
-    public static Addressable lua_getextraspace(Addressable L) {
+    public static Addressable lua_getextraspace(@NotNull Addressable L) {
         return L.address().addOffset(-LUA_EXTRASPACE());
     }
-    public static double lua_tonumber(Addressable L, int i) {
+    public static double lua_tonumber(@NotNull Addressable L, int i) {
         return lua_tonumberx(L, i, NULL);
     }
-    public static long lua_tointeger(Addressable L, int i) {
+    public static long lua_tointeger(@NotNull Addressable L, int i) {
         return lua_tointegerx(L, i, NULL);
     }
-    public static void lua_pop(Addressable L, int n) {
+    public static void lua_pop(@NotNull Addressable L, int n) {
         lua_settop(L, -n-1);
     }
-    public static void lua_newtable(Addressable L) {
+    public static void lua_newtable(@NotNull Addressable L) {
         lua_createtable(L, 0, 0);
     }
-    public static void lua_register(Addressable L, Addressable n, Addressable f) {
+    public static void lua_register(@NotNull Addressable L, Addressable n, Addressable f) {
         lua_pushcfunction(L, f);
         lua_setglobal(L, f);
     }
-    public static void lua_pushcfunction(Addressable L, Addressable f) {
+    public static void lua_pushcfunction(@NotNull Addressable L, Addressable f) {
         lua_pushcclosure(L, f, 0);
     }
-    public static boolean lua_isfunction(Addressable L, int n) {
+    public static boolean lua_isfunction(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TFUNCTION();
     }
-    public static boolean lua_istable(Addressable L, int n) {
+    public static boolean lua_istable(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TTABLE();
     }
-    public static boolean lua_islightuserdata(Addressable L, int n) {
+    public static boolean lua_islightuserdata(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TLIGHTUSERDATA();
     }
-    public static boolean lua_isnil(Addressable L, int n) {
+    public static boolean lua_isnil(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TNIL();
     }
-    public static boolean lua_isboolean(Addressable L, int n) {
+    public static boolean lua_isboolean(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TBOOLEAN();
     }
-    public static boolean lua_isthread(Addressable L, int n) {
+    public static boolean lua_isthread(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TTHREAD();
     }
-    public static boolean lua_isnone(Addressable L, int n) {
+    public static boolean lua_isnone(@NotNull Addressable L, int n) {
         return lua_type(L, n) == LUA_TNONE();
     }
-    public static boolean lua_isnoneornil(Addressable L, int n) {
+    public static boolean lua_isnoneornil(@NotNull Addressable L, int n) {
         return lua_type(L, n) <= 0;
     }
-    public static void lua_pushliteral(Addressable L, String s) {
+    public static void lua_pushliteral(@NotNull Addressable L, String s) {
         try (ResourceScope scope = ResourceScope.newConfinedScope()) {
             lua_pushstring(L, CLinker.toCString(s, scope));
         }
     }
-    public static void lua_pushglobaltable(Addressable L) {
+    public static void lua_pushglobaltable(@NotNull Addressable L) {
         lua_rawgeti(L, LUA_REGISTRYINDEX(), LUA_RIDX_GLOBALS());
     }
-    public static MemoryAddress lua_tostring(Addressable L, int i) {
+    public static MemoryAddress lua_tostring(@NotNull Addressable L, int i) {
         return lua_tolstring(L, i, NULL);
     }
-    public static void lua_insert(Addressable L, int idx) {
+    public static void lua_insert(@NotNull Addressable L, int idx) {
         lua_rotate(L, idx, 1);
     }
-    public static void lua_remove(Addressable L, int idx) {
+    public static void lua_remove(@NotNull Addressable L, int idx) {
         lua_rotate(L, idx, -1);
         lua_pop(L, 1);
     }
-    public static void lua_replace(Addressable L, int idx) {
+    public static void lua_replace(@NotNull Addressable L, int idx) {
         lua_copy(L, -1, idx);
         lua_pop(L, 1);
     }
@@ -1170,7 +1172,7 @@ public class Lua  {
     public static MethodHandle lua_getstack$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_getstack$MH,"lua_getstack");
     }
-    public static int lua_getstack ( Addressable L,  int level,  Addressable ar) {
+    public static int lua_getstack ( @NotNull Addressable L,  int level,  Addressable ar) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.lua_getstack$MH, "lua_getstack");
         try {
             return (int)mh$.invokeExact(L.address(), level, ar.address());
@@ -1181,7 +1183,7 @@ public class Lua  {
     public static MethodHandle lua_getinfo$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_getinfo$MH,"lua_getinfo");
     }
-    public static int lua_getinfo ( Addressable L,  Addressable what,  Addressable ar) {
+    public static int lua_getinfo ( @NotNull Addressable L,  Addressable what,  Addressable ar) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.lua_getinfo$MH, "lua_getinfo");
         try {
             return (int)mh$.invokeExact(L.address(), what.address(), ar.address());
@@ -1192,7 +1194,7 @@ public class Lua  {
     public static MethodHandle lua_getlocal$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_getlocal$MH,"lua_getlocal");
     }
-    public static MemoryAddress lua_getlocal ( Addressable L,  Addressable ar,  int n) {
+    public static MemoryAddress lua_getlocal ( @NotNull Addressable L,  Addressable ar,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.lua_getlocal$MH, "lua_getlocal");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), ar.address(), n);
@@ -1203,7 +1205,7 @@ public class Lua  {
     public static MethodHandle lua_setlocal$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_setlocal$MH,"lua_setlocal");
     }
-    public static MemoryAddress lua_setlocal ( Addressable L,  Addressable ar,  int n) {
+    public static MemoryAddress lua_setlocal ( @NotNull Addressable L,  Addressable ar,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.lua_setlocal$MH, "lua_setlocal");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), ar.address(), n);
@@ -1214,7 +1216,7 @@ public class Lua  {
     public static MethodHandle lua_getupvalue$MH() {
         return RuntimeHelper.requireNonNull(constants$15.lua_getupvalue$MH,"lua_getupvalue");
     }
-    public static MemoryAddress lua_getupvalue ( Addressable L,  int funcindex,  int n) {
+    public static MemoryAddress lua_getupvalue ( @NotNull Addressable L,  int funcindex,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.lua_getupvalue$MH, "lua_getupvalue");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), funcindex, n);
@@ -1225,7 +1227,7 @@ public class Lua  {
     public static MethodHandle lua_setupvalue$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_setupvalue$MH,"lua_setupvalue");
     }
-    public static MemoryAddress lua_setupvalue ( Addressable L,  int funcindex,  int n) {
+    public static MemoryAddress lua_setupvalue ( @NotNull Addressable L,  int funcindex,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_setupvalue$MH, "lua_setupvalue");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), funcindex, n);
@@ -1236,7 +1238,7 @@ public class Lua  {
     public static MethodHandle lua_upvalueid$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_upvalueid$MH,"lua_upvalueid");
     }
-    public static MemoryAddress lua_upvalueid ( Addressable L,  int fidx,  int n) {
+    public static MemoryAddress lua_upvalueid ( @NotNull Addressable L,  int fidx,  int n) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_upvalueid$MH, "lua_upvalueid");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), fidx, n);
@@ -1247,7 +1249,7 @@ public class Lua  {
     public static MethodHandle lua_upvaluejoin$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_upvaluejoin$MH,"lua_upvaluejoin");
     }
-    public static void lua_upvaluejoin ( Addressable L,  int fidx1,  int n1,  int fidx2,  int n2) {
+    public static void lua_upvaluejoin ( @NotNull Addressable L,  int fidx1,  int n1,  int fidx2,  int n2) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_upvaluejoin$MH, "lua_upvaluejoin");
         try {
             mh$.invokeExact(L.address(), fidx1, n1, fidx2, n2);
@@ -1258,7 +1260,7 @@ public class Lua  {
     public static MethodHandle lua_sethook$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_sethook$MH,"lua_sethook");
     }
-    public static void lua_sethook ( Addressable L,  Addressable func,  int mask,  int count) {
+    public static void lua_sethook ( @NotNull Addressable L,  Addressable func,  int mask,  int count) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_sethook$MH, "lua_sethook");
         try {
             mh$.invokeExact(L.address(), func.address(), mask, count);
@@ -1269,7 +1271,7 @@ public class Lua  {
     public static MethodHandle lua_gethook$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_gethook$MH,"lua_gethook");
     }
-    public static MemoryAddress lua_gethook ( Addressable L) {
+    public static MemoryAddress lua_gethook ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_gethook$MH, "lua_gethook");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address());
@@ -1280,7 +1282,7 @@ public class Lua  {
     public static MethodHandle lua_gethookmask$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lua_gethookmask$MH,"lua_gethookmask");
     }
-    public static int lua_gethookmask ( Addressable L) {
+    public static int lua_gethookmask ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.lua_gethookmask$MH, "lua_gethookmask");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1291,7 +1293,7 @@ public class Lua  {
     public static MethodHandle lua_gethookcount$MH() {
         return RuntimeHelper.requireNonNull(constants$17.lua_gethookcount$MH,"lua_gethookcount");
     }
-    public static int lua_gethookcount ( Addressable L) {
+    public static int lua_gethookcount ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.lua_gethookcount$MH, "lua_gethookcount");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1302,7 +1304,7 @@ public class Lua  {
     public static MethodHandle luaopen_base$MH() {
         return RuntimeHelper.requireNonNull(constants$17.luaopen_base$MH,"luaopen_base");
     }
-    public static int luaopen_base ( Addressable L) {
+    public static int luaopen_base ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.luaopen_base$MH, "luaopen_base");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1313,7 +1315,7 @@ public class Lua  {
     public static MethodHandle luaopen_coroutine$MH() {
         return RuntimeHelper.requireNonNull(constants$17.luaopen_coroutine$MH,"luaopen_coroutine");
     }
-    public static int luaopen_coroutine ( Addressable L) {
+    public static int luaopen_coroutine ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.luaopen_coroutine$MH, "luaopen_coroutine");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1324,7 +1326,7 @@ public class Lua  {
     public static MethodHandle luaopen_table$MH() {
         return RuntimeHelper.requireNonNull(constants$17.luaopen_table$MH,"luaopen_table");
     }
-    public static int luaopen_table ( Addressable L) {
+    public static int luaopen_table ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.luaopen_table$MH, "luaopen_table");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1335,7 +1337,7 @@ public class Lua  {
     public static MethodHandle luaopen_io$MH() {
         return RuntimeHelper.requireNonNull(constants$17.luaopen_io$MH,"luaopen_io");
     }
-    public static int luaopen_io ( Addressable L) {
+    public static int luaopen_io ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.luaopen_io$MH, "luaopen_io");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1346,7 +1348,7 @@ public class Lua  {
     public static MethodHandle luaopen_os$MH() {
         return RuntimeHelper.requireNonNull(constants$17.luaopen_os$MH,"luaopen_os");
     }
-    public static int luaopen_os ( Addressable L) {
+    public static int luaopen_os ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$17.luaopen_os$MH, "luaopen_os");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1357,7 +1359,7 @@ public class Lua  {
     public static MethodHandle luaopen_string$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_string$MH,"luaopen_string");
     }
-    public static int luaopen_string ( Addressable L) {
+    public static int luaopen_string ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_string$MH, "luaopen_string");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1368,7 +1370,7 @@ public class Lua  {
     public static MethodHandle luaopen_utf8$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_utf8$MH,"luaopen_utf8");
     }
-    public static int luaopen_utf8 ( Addressable L) {
+    public static int luaopen_utf8 ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_utf8$MH, "luaopen_utf8");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1379,7 +1381,7 @@ public class Lua  {
     public static MethodHandle luaopen_bit32$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_bit32$MH,"luaopen_bit32");
     }
-    public static int luaopen_bit32 ( Addressable L) {
+    public static int luaopen_bit32 ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_bit32$MH, "luaopen_bit32");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1390,7 +1392,7 @@ public class Lua  {
     public static MethodHandle luaopen_math$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_math$MH,"luaopen_math");
     }
-    public static int luaopen_math ( Addressable L) {
+    public static int luaopen_math ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_math$MH, "luaopen_math");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1401,7 +1403,7 @@ public class Lua  {
     public static MethodHandle luaopen_debug$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_debug$MH,"luaopen_debug");
     }
-    public static int luaopen_debug ( Addressable L) {
+    public static int luaopen_debug ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_debug$MH, "luaopen_debug");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1412,7 +1414,7 @@ public class Lua  {
     public static MethodHandle luaopen_package$MH() {
         return RuntimeHelper.requireNonNull(constants$18.luaopen_package$MH,"luaopen_package");
     }
-    public static int luaopen_package ( Addressable L) {
+    public static int luaopen_package ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.luaopen_package$MH, "luaopen_package");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1423,7 +1425,7 @@ public class Lua  {
     public static MethodHandle luaopen_eris$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaopen_eris$MH,"luaopen_eris");
     }
-    public static int luaopen_eris ( Addressable L) {
+    public static int luaopen_eris ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaopen_eris$MH, "luaopen_eris");
         try {
             return (int)mh$.invokeExact(L.address());
@@ -1434,7 +1436,7 @@ public class Lua  {
     public static MethodHandle luaL_openlibs$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_openlibs$MH,"luaL_openlibs");
     }
-    public static void luaL_openlibs ( Addressable L) {
+    public static void luaL_openlibs ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaL_openlibs$MH, "luaL_openlibs");
         try {
             mh$.invokeExact(L.address());
@@ -1445,7 +1447,7 @@ public class Lua  {
     public static MethodHandle luaL_checkversion_$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_checkversion_$MH,"luaL_checkversion_");
     }
-    public static void luaL_checkversion_ ( Addressable L,  double ver,  long sz) {
+    public static void luaL_checkversion_ ( @NotNull Addressable L,  double ver,  long sz) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaL_checkversion_$MH, "luaL_checkversion_");
         try {
             mh$.invokeExact(L.address(), ver, sz);
@@ -1454,14 +1456,14 @@ public class Lua  {
         }
     }
     // manually inserted macro translations
-    public static void luaL_checkversion(Addressable L) {
+    public static void luaL_checkversion(@NotNull Addressable L) {
         luaL_checkversion_(L, LUA_VERSION_NUM(), LUAL_NUMSIZES());
     }
     // end of manually inserted macro translations
     public static MethodHandle luaL_getmetafield$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_getmetafield$MH,"luaL_getmetafield");
     }
-    public static int luaL_getmetafield ( Addressable L,  int obj,  Addressable e) {
+    public static int luaL_getmetafield ( @NotNull Addressable L,  int obj,  Addressable e) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaL_getmetafield$MH, "luaL_getmetafield");
         try {
             return (int)mh$.invokeExact(L.address(), obj, e.address());
@@ -1472,7 +1474,7 @@ public class Lua  {
     public static MethodHandle luaL_callmeta$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_callmeta$MH,"luaL_callmeta");
     }
-    public static int luaL_callmeta ( Addressable L,  int obj,  Addressable e) {
+    public static int luaL_callmeta ( @NotNull Addressable L,  int obj,  Addressable e) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaL_callmeta$MH, "luaL_callmeta");
         try {
             return (int)mh$.invokeExact(L.address(), obj, e.address());
@@ -1483,7 +1485,7 @@ public class Lua  {
     public static MethodHandle luaL_tolstring$MH() {
         return RuntimeHelper.requireNonNull(constants$19.luaL_tolstring$MH,"luaL_tolstring");
     }
-    public static MemoryAddress luaL_tolstring ( Addressable L,  int idx,  Addressable len) {
+    public static MemoryAddress luaL_tolstring ( @NotNull Addressable L,  int idx,  Addressable len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.luaL_tolstring$MH, "luaL_tolstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), idx, len.address());
@@ -1494,7 +1496,7 @@ public class Lua  {
     public static MethodHandle luaL_argerror$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_argerror$MH,"luaL_argerror");
     }
-    public static int luaL_argerror ( Addressable L,  int arg,  Addressable extramsg) {
+    public static int luaL_argerror ( @NotNull Addressable L,  int arg,  Addressable extramsg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_argerror$MH, "luaL_argerror");
         try {
             return (int)mh$.invokeExact(L.address(), arg, extramsg.address());
@@ -1505,7 +1507,7 @@ public class Lua  {
     public static MethodHandle luaL_checklstring$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_checklstring$MH,"luaL_checklstring");
     }
-    public static MemoryAddress luaL_checklstring ( Addressable L,  int arg,  Addressable l) {
+    public static MemoryAddress luaL_checklstring ( @NotNull Addressable L,  int arg,  Addressable l) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_checklstring$MH, "luaL_checklstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), arg, l.address());
@@ -1516,7 +1518,7 @@ public class Lua  {
     public static MethodHandle luaL_optlstring$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_optlstring$MH,"luaL_optlstring");
     }
-    public static MemoryAddress luaL_optlstring ( Addressable L,  int arg,  Addressable def,  Addressable l) {
+    public static MemoryAddress luaL_optlstring ( @NotNull Addressable L,  int arg,  Addressable def,  Addressable l) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_optlstring$MH, "luaL_optlstring");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), arg, def.address(), l.address());
@@ -1527,7 +1529,7 @@ public class Lua  {
     public static MethodHandle luaL_checknumber$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_checknumber$MH,"luaL_checknumber");
     }
-    public static double luaL_checknumber ( Addressable L,  int arg) {
+    public static double luaL_checknumber ( @NotNull Addressable L,  int arg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_checknumber$MH, "luaL_checknumber");
         try {
             return (double)mh$.invokeExact(L.address(), arg);
@@ -1538,7 +1540,7 @@ public class Lua  {
     public static MethodHandle luaL_optnumber$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_optnumber$MH,"luaL_optnumber");
     }
-    public static double luaL_optnumber ( Addressable L,  int arg,  double def) {
+    public static double luaL_optnumber ( @NotNull Addressable L,  int arg,  double def) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_optnumber$MH, "luaL_optnumber");
         try {
             return (double)mh$.invokeExact(L.address(), arg, def);
@@ -1549,7 +1551,7 @@ public class Lua  {
     public static MethodHandle luaL_checkinteger$MH() {
         return RuntimeHelper.requireNonNull(constants$20.luaL_checkinteger$MH,"luaL_checkinteger");
     }
-    public static long luaL_checkinteger ( Addressable L,  int arg) {
+    public static long luaL_checkinteger ( @NotNull Addressable L,  int arg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.luaL_checkinteger$MH, "luaL_checkinteger");
         try {
             return (long)mh$.invokeExact(L.address(), arg);
@@ -1560,7 +1562,7 @@ public class Lua  {
     public static MethodHandle luaL_optinteger$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_optinteger$MH,"luaL_optinteger");
     }
-    public static long luaL_optinteger ( Addressable L,  int arg,  long def) {
+    public static long luaL_optinteger ( @NotNull Addressable L,  int arg,  long def) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_optinteger$MH, "luaL_optinteger");
         try {
             return (long)mh$.invokeExact(L.address(), arg, def);
@@ -1571,7 +1573,7 @@ public class Lua  {
     public static MethodHandle luaL_checkstack$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_checkstack$MH,"luaL_checkstack");
     }
-    public static void luaL_checkstack ( Addressable L,  int sz,  Addressable msg) {
+    public static void luaL_checkstack ( @NotNull Addressable L,  int sz,  Addressable msg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_checkstack$MH, "luaL_checkstack");
         try {
             mh$.invokeExact(L.address(), sz, msg.address());
@@ -1582,7 +1584,7 @@ public class Lua  {
     public static MethodHandle luaL_checktype$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_checktype$MH,"luaL_checktype");
     }
-    public static void luaL_checktype ( Addressable L,  int arg,  int t) {
+    public static void luaL_checktype ( @NotNull Addressable L,  int arg,  int t) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_checktype$MH, "luaL_checktype");
         try {
             mh$.invokeExact(L.address(), arg, t);
@@ -1593,7 +1595,7 @@ public class Lua  {
     public static MethodHandle luaL_checkany$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_checkany$MH,"luaL_checkany");
     }
-    public static void luaL_checkany ( Addressable L,  int arg) {
+    public static void luaL_checkany ( @NotNull Addressable L,  int arg) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_checkany$MH, "luaL_checkany");
         try {
             mh$.invokeExact(L.address(), arg);
@@ -1604,7 +1606,7 @@ public class Lua  {
     public static MethodHandle luaL_newmetatable$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_newmetatable$MH,"luaL_newmetatable");
     }
-    public static int luaL_newmetatable ( Addressable L,  Addressable tname) {
+    public static int luaL_newmetatable ( @NotNull Addressable L,  Addressable tname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_newmetatable$MH, "luaL_newmetatable");
         try {
             return (int)mh$.invokeExact(L.address(), tname.address());
@@ -1615,7 +1617,7 @@ public class Lua  {
     public static MethodHandle luaL_setmetatable$MH() {
         return RuntimeHelper.requireNonNull(constants$21.luaL_setmetatable$MH,"luaL_setmetatable");
     }
-    public static void luaL_setmetatable ( Addressable L,  Addressable tname) {
+    public static void luaL_setmetatable ( @NotNull Addressable L,  Addressable tname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.luaL_setmetatable$MH, "luaL_setmetatable");
         try {
             mh$.invokeExact(L.address(), tname.address());
@@ -1626,7 +1628,7 @@ public class Lua  {
     public static MethodHandle luaL_testudata$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_testudata$MH,"luaL_testudata");
     }
-    public static MemoryAddress luaL_testudata ( Addressable L,  int ud,  Addressable tname) {
+    public static MemoryAddress luaL_testudata ( @NotNull Addressable L,  int ud,  Addressable tname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_testudata$MH, "luaL_testudata");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), ud, tname.address());
@@ -1637,7 +1639,7 @@ public class Lua  {
     public static MethodHandle luaL_checkudata$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_checkudata$MH,"luaL_checkudata");
     }
-    public static MemoryAddress luaL_checkudata ( Addressable L,  int ud,  Addressable tname) {
+    public static MemoryAddress luaL_checkudata ( @NotNull Addressable L,  int ud,  Addressable tname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_checkudata$MH, "luaL_checkudata");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), ud, tname.address());
@@ -1648,7 +1650,7 @@ public class Lua  {
     public static MethodHandle luaL_where$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_where$MH,"luaL_where");
     }
-    public static void luaL_where ( Addressable L,  int lvl) {
+    public static void luaL_where ( @NotNull Addressable L,  int lvl) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_where$MH, "luaL_where");
         try {
             mh$.invokeExact(L.address(), lvl);
@@ -1659,7 +1661,7 @@ public class Lua  {
     public static MethodHandle luaL_error$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_error$MH,"luaL_error");
     }
-    public static int luaL_error ( Addressable L,  Addressable fmt, Object... x2) {
+    public static int luaL_error ( @NotNull Addressable L,  Addressable fmt, Object... x2) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_error$MH, "luaL_error");
         try {
             return (int)mh$.invokeExact(L.address(), fmt.address(), x2);
@@ -1670,7 +1672,7 @@ public class Lua  {
     public static MethodHandle luaL_checkoption$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_checkoption$MH,"luaL_checkoption");
     }
-    public static int luaL_checkoption ( Addressable L,  int arg,  Addressable def,  Addressable lst) {
+    public static int luaL_checkoption ( @NotNull Addressable L,  int arg,  Addressable def,  Addressable lst) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_checkoption$MH, "luaL_checkoption");
         try {
             return (int)mh$.invokeExact(L.address(), arg, def.address(), lst.address());
@@ -1681,7 +1683,7 @@ public class Lua  {
     public static MethodHandle luaL_fileresult$MH() {
         return RuntimeHelper.requireNonNull(constants$22.luaL_fileresult$MH,"luaL_fileresult");
     }
-    public static int luaL_fileresult ( Addressable L,  int stat,  Addressable fname) {
+    public static int luaL_fileresult ( @NotNull Addressable L,  int stat,  Addressable fname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$22.luaL_fileresult$MH, "luaL_fileresult");
         try {
             return (int)mh$.invokeExact(L.address(), stat, fname.address());
@@ -1692,7 +1694,7 @@ public class Lua  {
     public static MethodHandle luaL_execresult$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_execresult$MH,"luaL_execresult");
     }
-    public static int luaL_execresult ( Addressable L,  int stat) {
+    public static int luaL_execresult ( @NotNull Addressable L,  int stat) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_execresult$MH, "luaL_execresult");
         try {
             return (int)mh$.invokeExact(L.address(), stat);
@@ -1703,7 +1705,7 @@ public class Lua  {
     public static MethodHandle luaL_ref$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_ref$MH,"luaL_ref");
     }
-    public static int luaL_ref ( Addressable L,  int t) {
+    public static int luaL_ref ( @NotNull Addressable L,  int t) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_ref$MH, "luaL_ref");
         try {
             return (int)mh$.invokeExact(L.address(), t);
@@ -1714,7 +1716,7 @@ public class Lua  {
     public static MethodHandle luaL_unref$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_unref$MH,"luaL_unref");
     }
-    public static void luaL_unref ( Addressable L,  int t,  int ref) {
+    public static void luaL_unref ( @NotNull Addressable L,  int t,  int ref) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_unref$MH, "luaL_unref");
         try {
             mh$.invokeExact(L.address(), t, ref);
@@ -1725,7 +1727,7 @@ public class Lua  {
     public static MethodHandle luaL_loadfilex$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_loadfilex$MH,"luaL_loadfilex");
     }
-    public static int luaL_loadfilex ( Addressable L,  Addressable filename,  Addressable mode) {
+    public static int luaL_loadfilex ( @NotNull Addressable L,  Addressable filename,  Addressable mode) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_loadfilex$MH, "luaL_loadfilex");
         try {
             return (int)mh$.invokeExact(L.address(), filename.address(), mode.address());
@@ -1734,14 +1736,14 @@ public class Lua  {
         }
     }
     // manually inserted macro translations
-    public static int luaL_loadfile(Addressable L, Addressable f) {
+    public static int luaL_loadfile(@NotNull Addressable L, Addressable f) {
         return luaL_loadfilex(L, f, NULL);
     }
     // end of manually inserted macro translations
     public static MethodHandle luaL_loadbufferx$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_loadbufferx$MH,"luaL_loadbufferx");
     }
-    public static int luaL_loadbufferx ( Addressable L,  Addressable buff,  long sz,  Addressable name,  Addressable mode) {
+    public static int luaL_loadbufferx ( @NotNull Addressable L,  Addressable buff,  long sz,  Addressable name,  Addressable mode) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_loadbufferx$MH, "luaL_loadbufferx");
         try {
             return (int)mh$.invokeExact(L.address(), buff.address(), sz, name.address(), mode.address());
@@ -1752,7 +1754,7 @@ public class Lua  {
     public static MethodHandle luaL_loadstring$MH() {
         return RuntimeHelper.requireNonNull(constants$23.luaL_loadstring$MH,"luaL_loadstring");
     }
-    public static int luaL_loadstring ( Addressable L,  Addressable s) {
+    public static int luaL_loadstring ( @NotNull Addressable L,  Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.luaL_loadstring$MH, "luaL_loadstring");
         try {
             return (int)mh$.invokeExact(L.address(), s.address());
@@ -1774,7 +1776,7 @@ public class Lua  {
     public static MethodHandle luaL_len$MH() {
         return RuntimeHelper.requireNonNull(constants$24.luaL_len$MH,"luaL_len");
     }
-    public static long luaL_len ( Addressable L,  int idx) {
+    public static long luaL_len ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.luaL_len$MH, "luaL_len");
         try {
             return (long)mh$.invokeExact(L.address(), idx);
@@ -1785,7 +1787,7 @@ public class Lua  {
     public static MethodHandle luaL_gsub$MH() {
         return RuntimeHelper.requireNonNull(constants$24.luaL_gsub$MH,"luaL_gsub");
     }
-    public static MemoryAddress luaL_gsub ( Addressable L,  Addressable s,  Addressable p,  Addressable r) {
+    public static MemoryAddress luaL_gsub ( @NotNull Addressable L,  Addressable s,  Addressable p,  Addressable r) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.luaL_gsub$MH, "luaL_gsub");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), s.address(), p.address(), r.address());
@@ -1796,7 +1798,7 @@ public class Lua  {
     public static MethodHandle luaL_setfuncs$MH() {
         return RuntimeHelper.requireNonNull(constants$24.luaL_setfuncs$MH,"luaL_setfuncs");
     }
-    public static void luaL_setfuncs ( Addressable L,  Addressable l,  int nup) {
+    public static void luaL_setfuncs ( @NotNull Addressable L,  Addressable l,  int nup) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.luaL_setfuncs$MH, "luaL_setfuncs");
         try {
             mh$.invokeExact(L.address(), l.address(), nup);
@@ -1807,7 +1809,7 @@ public class Lua  {
     public static MethodHandle luaL_getsubtable$MH() {
         return RuntimeHelper.requireNonNull(constants$24.luaL_getsubtable$MH,"luaL_getsubtable");
     }
-    public static int luaL_getsubtable ( Addressable L,  int idx,  Addressable fname) {
+    public static int luaL_getsubtable ( @NotNull Addressable L,  int idx,  Addressable fname) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.luaL_getsubtable$MH, "luaL_getsubtable");
         try {
             return (int)mh$.invokeExact(L.address(), idx, fname.address());
@@ -1818,7 +1820,7 @@ public class Lua  {
     public static MethodHandle luaL_traceback$MH() {
         return RuntimeHelper.requireNonNull(constants$24.luaL_traceback$MH,"luaL_traceback");
     }
-    public static void luaL_traceback ( Addressable L,  Addressable L1,  Addressable msg,  int level) {
+    public static void luaL_traceback ( @NotNull Addressable L,  Addressable L1,  Addressable msg,  int level) {
         var mh$ = RuntimeHelper.requireNonNull(constants$24.luaL_traceback$MH, "luaL_traceback");
         try {
             mh$.invokeExact(L.address(), L1.address(), msg.address(), level);
@@ -1829,7 +1831,7 @@ public class Lua  {
     public static MethodHandle luaL_requiref$MH() {
         return RuntimeHelper.requireNonNull(constants$25.luaL_requiref$MH,"luaL_requiref");
     }
-    public static void luaL_requiref ( Addressable L,  Addressable modname,  Addressable openf,  int glb) {
+    public static void luaL_requiref ( @NotNull Addressable L,  Addressable modname,  Addressable openf,  int glb) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.luaL_requiref$MH, "luaL_requiref");
         try {
             mh$.invokeExact(L.address(), modname.address(), openf.address(), glb);
@@ -1841,36 +1843,36 @@ public class Lua  {
     // some useful macros
     // TODO: luaL_newlibtable
     // TODO: luaL_newlib
-    public static void luaL_argcheck(Addressable L, boolean cond, int arg, Addressable extramsg) {
+    public static void luaL_argcheck(@NotNull Addressable L, boolean cond, int arg, Addressable extramsg) {
         if (!cond)
             luaL_argerror(L, arg, extramsg);
     }
-    public static MemoryAddress luaL_checkstring(Addressable L, int n) {
+    public static MemoryAddress luaL_checkstring(@NotNull Addressable L, int n) {
         return luaL_checklstring(L, n, NULL);
     }
-    public static MemoryAddress luaL_optstring(Addressable L, int n, Addressable d) {
+    public static MemoryAddress luaL_optstring(@NotNull Addressable L, int n, Addressable d) {
         return luaL_optlstring(L, n, d, NULL);
     }
-    public static MemoryAddress luaL_typename(Addressable L, int i) {
+    public static MemoryAddress luaL_typename(@NotNull Addressable L, int i) {
         return lua_typename(L, lua_type(L, i));
     }
-    public static int luaL_dofile(Addressable L, Addressable fn) {
+    public static int luaL_dofile(@NotNull Addressable L, Addressable fn) {
         int err = luaL_loadfile(L, fn);
         if (err == 0)
             err = lua_pcall(L, 0, LUA_MULTRET(), 0);
         return err;
     }
-    public static int luaL_dostring(Addressable L, Addressable s) {
+    public static int luaL_dostring(@NotNull Addressable L, Addressable s) {
         int err = luaL_loadstring(L, s);
         if (err == 0)
             err = lua_pcall(L, 0, LUA_MULTRET(), 0);
         return err;
     }
-    public static int luaL_getmetatable(Addressable L, Addressable n) {
+    public static int luaL_getmetatable(@NotNull Addressable L, Addressable n) {
         return lua_getfield(L, LUA_REGISTRYINDEX(), n);
     }
     // TODO: lua_opt (function argument)
-    public static int luaL_loadbuffer(Addressable L, Addressable s, long sz, Addressable n) {
+    public static int luaL_loadbuffer(@NotNull Addressable L, Addressable s, long sz, Addressable n) {
         return luaL_loadbufferx(L,s,sz,n,NULL);
     }
     // Generic Buffer manipulation
@@ -1886,7 +1888,7 @@ public class Lua  {
     public static MethodHandle luaL_buffinit$MH() {
         return RuntimeHelper.requireNonNull(constants$25.luaL_buffinit$MH,"luaL_buffinit");
     }
-    public static void luaL_buffinit ( Addressable L,  Addressable B) {
+    public static void luaL_buffinit ( @NotNull Addressable L,  Addressable B) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.luaL_buffinit$MH, "luaL_buffinit");
         try {
             mh$.invokeExact(L.address(), B.address());
@@ -1963,7 +1965,7 @@ public class Lua  {
     public static MethodHandle luaL_buffinitsize$MH() {
         return RuntimeHelper.requireNonNull(constants$26.luaL_buffinitsize$MH,"luaL_buffinitsize");
     }
-    public static MemoryAddress luaL_buffinitsize ( Addressable L,  Addressable B,  long sz) {
+    public static MemoryAddress luaL_buffinitsize ( @NotNull Addressable L,  Addressable B,  long sz) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.luaL_buffinitsize$MH, "luaL_buffinitsize");
         try {
             return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(L.address(), B.address(), sz);
@@ -1979,7 +1981,7 @@ public class Lua  {
     public static MethodHandle eris_dump$MH() {
         return RuntimeHelper.requireNonNull(constants$26.eris_dump$MH,"eris_dump");
     }
-    public static void eris_dump ( Addressable L,  Addressable writer,  Addressable ud) {
+    public static void eris_dump ( @NotNull Addressable L,  Addressable writer,  Addressable ud) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.eris_dump$MH, "eris_dump");
         try {
             mh$.invokeExact(L.address(), writer.address(), ud.address());
@@ -1990,7 +1992,7 @@ public class Lua  {
     public static MethodHandle eris_undump$MH() {
         return RuntimeHelper.requireNonNull(constants$26.eris_undump$MH,"eris_undump");
     }
-    public static void eris_undump ( Addressable L,  Addressable reader,  Addressable ud) {
+    public static void eris_undump ( @NotNull Addressable L,  Addressable reader,  Addressable ud) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.eris_undump$MH, "eris_undump");
         try {
             mh$.invokeExact(L.address(), reader.address(), ud.address());
@@ -2001,7 +2003,7 @@ public class Lua  {
     public static MethodHandle eris_persist$MH() {
         return RuntimeHelper.requireNonNull(constants$26.eris_persist$MH,"eris_persist");
     }
-    public static void eris_persist ( Addressable L,  int perms,  int value) {
+    public static void eris_persist ( @NotNull Addressable L,  int perms,  int value) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.eris_persist$MH, "eris_persist");
         try {
             mh$.invokeExact(L.address(), perms, value);
@@ -2012,7 +2014,7 @@ public class Lua  {
     public static MethodHandle eris_unpersist$MH() {
         return RuntimeHelper.requireNonNull(constants$27.eris_unpersist$MH,"eris_unpersist");
     }
-    public static void eris_unpersist ( Addressable L,  int perms,  int value) {
+    public static void eris_unpersist ( @NotNull Addressable L,  int perms,  int value) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.eris_unpersist$MH, "eris_unpersist");
         try {
             mh$.invokeExact(L.address(), perms, value);
@@ -2023,7 +2025,7 @@ public class Lua  {
     public static MethodHandle eris_get_setting$MH() {
         return RuntimeHelper.requireNonNull(constants$27.eris_get_setting$MH,"eris_get_setting");
     }
-    public static void eris_get_setting ( Addressable L,  Addressable name) {
+    public static void eris_get_setting ( @NotNull Addressable L,  Addressable name) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.eris_get_setting$MH, "eris_get_setting");
         try {
             mh$.invokeExact(L.address(), name.address());
@@ -2034,7 +2036,7 @@ public class Lua  {
     public static MethodHandle eris_set_setting$MH() {
         return RuntimeHelper.requireNonNull(constants$27.eris_set_setting$MH,"eris_set_setting");
     }
-    public static void eris_set_setting ( Addressable L,  Addressable name,  int value) {
+    public static void eris_set_setting ( @NotNull Addressable L,  Addressable name,  int value) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.eris_set_setting$MH, "eris_set_setting");
         try {
             mh$.invokeExact(L.address(), name.address(), value);

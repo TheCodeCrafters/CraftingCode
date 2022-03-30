@@ -7,8 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 
-import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Integer;
-import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.lua_Number;
+import static io.github.thecodecrafters.craftingcode.lua.foreign.Lua.*;
 import static jdk.incubator.foreign.CLinker.*;
 import static jdk.incubator.foreign.MemoryLayouts.ADDRESS;
 
@@ -43,7 +42,7 @@ class constants$7 {
     static final FunctionDescriptor lua_pushlstring$FUNC = FunctionDescriptor.of(C_POINTER,
         C_POINTER,
         C_POINTER,
-        ADDRESS
+        size_t
     );
     static final MethodHandle lua_pushlstring$MH = RuntimeHelper.downcallHandle(
         Lua.LIBRARIES, "lua_pushlstring",
