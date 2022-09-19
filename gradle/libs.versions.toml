@@ -1,7 +1,7 @@
 [versions]
 	enderlib = '1.0.0+0.3.1'
 	annotations = '23.0.0'
-	fapi = '0.47.10+1.18.2'
+	fapi = '0.48.0+1.18.2'
 	modmenu = '3.1.0'
 	patchouli = '1.18.2-66'
 	floader = '0.14.9'
