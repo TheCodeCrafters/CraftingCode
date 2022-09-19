@@ -1,0 +1,21 @@
+[versions]
+	enderlib = '1.0.0+0.3.1'
+	annotations = '23.0.0'
+	fapi = '0.47.10+1.18.2'
+	modmenu = '3.1.0'
+	patchouli = '1.18.2-66'
+	floader = '0.14.9'
+
+[libraries]
+	annotations = { module = 'org.jetbrains:annotations', version.ref = 'annotations' }
+	enderlib = { module = 'com.enderzombi102.EnderLib:minecraft', version.ref = 'enderlib' }
+	fapi = { module = 'net.fabricmc.fabric-api:fabric-api', version.ref = 'fapi' }
+	modmenu = { module = 'com.terraformersmc:modmenu', version.ref = 'modmenu' }
+	patchouli = { module = 'vazkii.patchouli:Patchouli', version.ref = 'patchouli' }
+	floader = { module = 'net.fabricmc:fabric-loader', version.ref = 'floader' }
+
+[bundles]
+	include = [ 'enderlib' ]
+	compileOnly = [ ]
+	implementation = [ 'annotations', 'enderlib' ]
+	modImplementation = [ 'floader', 'fapi', 'modmenu', 'patchouli', ]
