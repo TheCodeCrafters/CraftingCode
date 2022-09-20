@@ -1,7 +1,7 @@
 lang-api:
    - create VM
    - call functions
-   - create objects ( if avaliable )
+   - create objects ( if available )
    - get/set value,
    - get error
    - load file
@@ -45,6 +45,6 @@ core:
         - Mono ( basically any lang )
         - Ruby
         - Fantom (?)
-        - Squirrel ( i like to suffer )
+        - Squirrel ( ender likes to suffer )
         - ZenScript
-        - Python ( JavaPython if i manage to work on it, else just use Jython or CBind CPython )
+        - Python ( JavaPython if the Aurora Inhabitants manage to work on it, else just use Jython or CBind CPython )
