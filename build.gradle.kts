@@ -13,8 +13,7 @@ val shade = configurations.create("shade")
 repositories {
 	mavenCentral()
 	maven( url="https://maven.blamejared.com" )
-	maven( url="https://repsy.io/mvn/enderzombi102/mc" )
-	maven( url="https://maven.terraformersmc.com/releases" )
+	maven( url="https://maven.terraformersmc.com/releases/" )
 }
 
 dependencies {
@@ -34,13 +33,9 @@ dependencies {
 
 tasks.withType<ProcessResources> {
 	inputs.property( "version", project.version )
-	inputs.property( "minecraft_version", minecraft_version )
 
 	filesMatching("fabric.mod.json") {
-		expand(
-			Pair( "version", project.version ),
-			Pair( "minecraft_version", minecraft_version )
-		)
+		expand( Pair( "version", project.version ) )
 	}
 }
 

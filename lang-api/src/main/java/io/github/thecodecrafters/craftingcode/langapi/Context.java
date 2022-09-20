@@ -6,10 +6,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * An try-with-resources-enabled object that is responsible for:<br>
- *  - Save/loading the language state for a computer<br>
- *  - Getting a value in the state<br>
- *  - Setting a value in the state<br>
+ * An try-with-resources-enabled object that is responsible for:
+ *  - Save/loading the language state for a computer
+ *  - Getting a value in the state
+ *  - Setting a value in the state
  *  - Call a global function defined in the state
  */
 public interface Context extends AutoCloseable {

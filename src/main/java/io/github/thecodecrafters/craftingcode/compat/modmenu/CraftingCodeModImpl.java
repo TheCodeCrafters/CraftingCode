@@ -2,7 +2,7 @@ package io.github.thecodecrafters.craftingcode.compat.modmenu;
 
 import com.terraformersmc.modmenu.ModMenu;
 import com.terraformersmc.modmenu.util.mod.Mod;
-import com.terraformersmc.modmenu.util.mod.fabric.FabricIconHandler;
+import com.terraformersmc.modmenu.util.mod.ModIconHandler;
 import io.github.thecodecrafters.craftingcode.langapi.LanguageProvider;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +31,7 @@ public class CraftingCodeModImpl implements Mod {
 	}
 
 	@Override
-	public @NotNull NativeImageBackedTexture getIcon( FabricIconHandler iconHandler, int i) {
+	public /*@NotNull*/ NativeImageBackedTexture getIcon(ModIconHandler iconHandler, int i) {
 		return null;
 	}
 
@@ -62,11 +62,6 @@ public class CraftingCodeModImpl implements Mod {
 
 	@Override
 	public @NotNull List<String> getContributors() {
-		return List.of();
-	}
-
-	@Override
-	public @NotNull List<String> getCredits() {
 		return List.of();
 	}
 
