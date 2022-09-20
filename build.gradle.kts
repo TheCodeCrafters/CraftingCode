@@ -6,8 +6,8 @@ plugins {
 	`maven-publish`
 }
 
-val minecraft_version: String  by project
-val mappings: String by project
+val minecraft_version = "1.18.2" // by project
+val mappings = "7" // by project
 val shade = configurations.create("shade")
 
 repositories {
@@ -31,7 +31,7 @@ dependencies {
 
 }
 
-tasks.withType<ProcessResources> {
+tasks.withType<ProcessResources>() {
 	inputs.property( "version", project.version )
 
 	filesMatching("fabric.mod.json") {
@@ -40,7 +40,7 @@ tasks.withType<ProcessResources> {
 }
 
 allprojects {
-	tasks.withType<JavaCompile> {
+	tasks.withType<JavaCompile>() {
 		// Minecraft 1.18 (1.18-pre2) and upwards uses Java 17.
 		options.encoding = "UTF-8"
 		options.release.set(17)
@@ -49,6 +49,8 @@ allprojects {
 }
 
 java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present. If you remove this line, sources will not be generated.
 	withSourcesJar()
 }
 
@@ -58,7 +60,7 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
 	archiveClassifier.set( "" )
 }
 
-tasks.withType<Jar> {
+tasks.withType<Jar>() {
 	from("LICENSE") {
 		rename { "${it}_${archiveBaseName}"}
 	}
