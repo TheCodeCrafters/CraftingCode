@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * A VirtualMachine is where the language interpreter is managed and used
+ * A VirtualMachine is where the language interpreter is managed and used,<br>
  * can be also used to register stuff the language may interact with
  */
 public interface VirtualMachine {

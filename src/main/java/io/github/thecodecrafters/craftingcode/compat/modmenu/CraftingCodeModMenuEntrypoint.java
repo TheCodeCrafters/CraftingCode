@@ -10,11 +10,11 @@ public class CraftingCodeModMenuEntrypoint implements ModMenuApi {
 		LanguageProvider provider = CraftingCode.getInstance().getProviderManager().getDummyProvider();
 		if ( provider != null ) {
 			ModMenu.PARENT_MAP.put(
-					ModMenu.MODS.get("craftingcode"),
-					ModMenu.MODS.put(
-							"craftingcode-dummy",
-							new CraftingCodeModImpl(provider)
-					)
+				ModMenu.MODS.get( "craftingcode" ),
+				ModMenu.MODS.put(
+					"craftingcode-dummy",
+					new CraftingCodeModImpl( provider )
+				)
 			);
 		}
 	}

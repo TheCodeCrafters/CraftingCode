@@ -1,3 +1,6 @@
 {
-	"itemGroup.craftingcode.main": "Crafting Code"
+	"itemGroup.craftingcode.main": "Crafting Code",
+	"item.craftingcode": {
+		"technicians_guide": "Technician's Guide"
+	}
 }
