@@ -6,6 +6,7 @@ import java.lang.invoke.MethodHandle;
 
 import jdk.incubator.foreign.*;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import static jdk.incubator.foreign.CLinker.*;
@@ -283,6 +284,7 @@ public class Lua  {
     public static MethodHandle lua_gettop$MH() {
         return RuntimeHelper.requireNonNull(constants$2.lua_gettop$MH,"lua_gettop");
     }
+    @Contract(pure = true)
     public static int lua_gettop ( @NotNull Addressable L) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.lua_gettop$MH, "lua_gettop");
         try {
@@ -404,10 +406,10 @@ public class Lua  {
     public static MethodHandle lua_isuserdata$MH() {
         return RuntimeHelper.requireNonNull(constants$4.lua_isuserdata$MH,"lua_isuserdata");
     }
-    public static int lua_isuserdata ( @NotNull Addressable L,  int idx) {
+    public static boolean lua_isuserdata ( @NotNull Addressable L,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.lua_isuserdata$MH, "lua_isuserdata");
         try {
-            return (int)mh$.invokeExact(L.address(), idx);
+            return (int)mh$.invokeExact(L.address(), idx) != 0;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -547,10 +549,10 @@ public class Lua  {
     public static MethodHandle lua_rawequal$MH() {
         return RuntimeHelper.requireNonNull(constants$6.lua_rawequal$MH,"lua_rawequal");
     }
-    public static int lua_rawequal ( @NotNull Addressable L,  int idx1,  int idx2) {
+    public static boolean lua_rawequal (@NotNull Addressable L, int idx1, int idx2) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.lua_rawequal$MH, "lua_rawequal");
         try {
-            return (int)mh$.invokeExact(L.address(), idx1, idx2);
+            return (int)mh$.invokeExact(L.address(), idx1, idx2) != 0;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

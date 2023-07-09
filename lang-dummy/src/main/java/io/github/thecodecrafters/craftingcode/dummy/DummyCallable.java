@@ -26,9 +26,11 @@ public class DummyCallable implements Callable {
 	public @NotNull Value invoke(Object... args) throws WrappedException {
 		try {
 			var res = result;
-			if ( res == null )
-				res = (Value) Objects.requireNonNull(impl).invoke( args );
+			if (res == null)
+				res = (Value) Objects.requireNonNull(impl).invoke(args);
 			return res;
+		} catch (Error e) {
+			throw e;
 		} catch (Throwable e) {
 			throw new WrappedException(e);
 		}

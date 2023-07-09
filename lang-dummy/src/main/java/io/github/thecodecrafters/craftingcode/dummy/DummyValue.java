@@ -73,6 +73,10 @@ public class DummyValue implements Value {
 		return (Callable) value;
 	}
 
+	@Override
+	public Object asJavaObject() {
+		return value;
+	}
 
 	@Override
 	public boolean isNull() {
@@ -126,5 +130,10 @@ public class DummyValue implements Value {
 
 	public static Value ofCallable(MethodHandle callable) {
 		return new DummyValue( new DummyCallable( callable ) );
+	}
+
+	@Override
+	public boolean isJavaObject() {
+		return !isNull() && !isString() && !isCharacter() && !isBoolean() && !isDottedNumber() && !isUndottedNumber() && !isMap() && !isList() && !isCallable();
 	}
 }

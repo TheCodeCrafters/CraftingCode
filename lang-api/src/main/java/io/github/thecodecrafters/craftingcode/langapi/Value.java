@@ -18,6 +18,7 @@ public interface Value {
 	Map<String, Value> asMap();
 	List<Value> asList();
 	Callable asCallable();
+	Object asJavaObject();
 
 	boolean isNull();
 	boolean isString();
@@ -28,4 +29,5 @@ public interface Value {
 	boolean isMap();
 	boolean isList();
 	boolean isCallable();
+	boolean isJavaObject();
 }

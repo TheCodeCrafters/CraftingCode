@@ -2,6 +2,8 @@ package io.github.thecodecrafters.craftingcode.lua.convert;
 
 import io.github.thecodecrafters.craftingcode.langapi.Callable;
 import io.github.thecodecrafters.craftingcode.langapi.Value;
+import io.github.thecodecrafters.craftingcode.lua.LuaContext;
+import io.github.thecodecrafters.craftingcode.lua.MetatableNames;
 import io.github.thecodecrafters.craftingcode.lua.foreign.Lua;
 import jdk.incubator.foreign.*;
 import org.jetbrains.annotations.NotNull;
@@ -84,6 +86,11 @@ public class LuaConverter {
         }
 
         @Override
+        default Object asJavaObject() {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
         default boolean isNull() {
             return false;
         }
@@ -127,6 +134,11 @@ public class LuaConverter {
         default boolean isCallable() {
             return false;
         }
+
+        @Override
+        default boolean isJavaObject() {
+            return false;
+        }
     }
 
     public static void objectToLua(@NotNull MemoryAddress L, @Nullable Object o) {
@@ -153,6 +165,7 @@ public class LuaConverter {
     }
 
     public static @NotNull Value valueFromLua(@NotNull MemoryAddress L, int idx) {
+        idx = lua_absindex(L, idx);
         final int type = lua_type(L, idx);
         if (type == LUA_TNIL() || type == LUA_TNONE()) {
             return BaseValue.NULL_VALUE;
@@ -285,6 +298,31 @@ public class LuaConverter {
         } else if (type == LUA_TFUNCTION()) {
             throw new UnsupportedOperationException();
         } else if (type == LUA_TUSERDATA()) {
+            lua_getmetatable(L, idx);
+            luaL_getmetatable(L, MetatableNames.WRAPPED_JAVA_OBJECT);
+            luaL_getmetatable(L, MetatableNames.WRAPPED_JAVA_THROWABLE);
+            if (lua_rawequal(L, -3, -2) || lua_rawequal(L, -3, -1)) {
+                lua_pop(L, 3);
+                var ctx = LuaContext.getContextByState(L);
+                var obj = ctx.getWrappedObject(lua_touserdata(L, idx));
+                return new BaseValue() {
+                    @Override
+                    public Object asJavaObject() {
+                        return obj;
+                    }
+
+                    @Override
+                    public boolean isJavaObject() {
+                        return true;
+                    }
+
+                    @Override
+                    public String toString() {
+                        return "LuaValue[JavaObject(" + obj + ")]";
+                    }
+                };
+            }
+            lua_pop(L, 3);
             throw new UnsupportedOperationException();
         } else if (type == LUA_TTHREAD()) {
             throw new UnsupportedOperationException();
@@ -325,18 +363,16 @@ public class LuaConverter {
         }
     }
 
-    public static int integerToLua(@NotNull MemoryAddress L, long i) {
+    public static void integerToLua(@NotNull MemoryAddress L, long i) {
         lua_pushinteger(L, i);
-        return 1;
     }
 
     public static long integerFromLua(@NotNull MemoryAddress L, int idx) {
         return lua_tointeger(L, idx);
     }
 
-    public static int floatingPointToLua(@NotNull MemoryAddress L, double f) {
+    public static void floatingPointToLua(@NotNull MemoryAddress L, double f) {
         lua_pushnumber(L, f);
-        return 1;
     }
 
     public static double floatingPointFromLua(@NotNull MemoryAddress L, int idx) {

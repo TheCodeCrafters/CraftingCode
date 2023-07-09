@@ -1,6 +1,7 @@
 package io.github.thecodecrafters.craftingcode.lua.convert;
 
 import io.github.thecodecrafters.craftingcode.langapi.Value;
+import io.github.thecodecrafters.craftingcode.lua.LuaContext;
 import io.github.thecodecrafters.craftingcode.lua.foreign.Lua;
 import jdk.incubator.foreign.*;
 import org.jetbrains.annotations.NotNull;
@@ -23,49 +24,56 @@ public class FunctionAdapter {
         final var lookup = MethodHandles.lookup();
         try {
             lookup.ensureInitialized(LuaConverter.class);
-            MethodHandle integerToLua = lookup.findStatic(LuaConverter.class, "integerToLua", MethodType.methodType(int.class, MemoryAddress.class, long.class));
-            MethodHandle floatingPointToLua = lookup.findStatic(LuaConverter.class, "floatingPointToLua", MethodType.methodType(int.class, MemoryAddress.class, double.class));
-            CONVERTERS = Map.of(
-                    String.class, new Converter(
+            MethodHandle integerToLua = lookup.findStatic(LuaConverter.class, "integerToLua", MethodType.methodType(void.class, MemoryAddress.class, long.class));
+            MethodHandle floatingPointToLua = lookup.findStatic(LuaConverter.class, "floatingPointToLua", MethodType.methodType(void.class, MemoryAddress.class, double.class));
+            MethodHandle luaContextByState = lookup.findStatic(LuaContext.class, "getContextByState", MethodType.methodType(LuaContext.class, Addressable.class));
+            CONVERTERS = Map.ofEntries(
+                    Map.entry(String.class, new Converter(
                             lookup.findStatic(LuaConverter.class, "stringToLua", MethodType.methodType(int.class, MemoryAddress.class, String.class)),
                             lookup.findStatic(LuaConverter.class, "stringFromLua", MethodType.methodType(String.class, MemoryAddress.class, int.class))
-                    ),
-                    byte.class, new Converter(
+                    )),
+                    Map.entry(byte.class, new Converter(
                             integerToLua.asType(MethodType.methodType(int.class, MemoryAddress.class, byte.class)),
                             null
-                    ),
-                    short.class, new Converter(
+                    )),
+                    Map.entry(short.class, new Converter(
                             integerToLua.asType(MethodType.methodType(int.class, MemoryAddress.class, short.class)),
                             null
-                    ),
-                    int.class, new Converter(
+                    )),
+                    Map.entry(int.class, new Converter(
                             integerToLua.asType(MethodType.methodType(int.class, MemoryAddress.class, int.class)),
                             null
-                    ),
-                    long.class, new Converter(
+                    )),
+                    Map.entry(long.class, new Converter(
                             integerToLua,
                             null
-                    ),
-                    float.class, new Converter(
+                    )),
+                    Map.entry(float.class, new Converter(
                             floatingPointToLua.asType(MethodType.methodType(int.class, MemoryAddress.class, float.class)),
                             null
-                    ),
-                    double.class, new Converter(
+                    )),
+                    Map.entry(double.class, new Converter(
                             floatingPointToLua,
                             null
-                    ),
-                    void.class, new Converter(
+                    )),
+                    Map.entry(void.class, new Converter(
                             lookup.findStatic(FunctionAdapter.class, "voidToLua", MethodType.methodType(int.class, MemoryAddress.class)),
                             null
-                    ),
-                    Object.class, new Converter(
+                    )),
+                    Map.entry(Object.class, new Converter(
                             lookup.findStatic(LuaConverter.class, "objectToLua", MethodType.methodType(void.class, MemoryAddress.class, Object.class)),
                             null
-                    ),
-                    Value.class, new Converter(
+                    )),
+                    Map.entry(Value.class, new Converter(
                             null,
                             lookup.findStatic(LuaConverter.class, "valueFromLua", MethodType.methodType(Value.class, MemoryAddress.class, int.class))
-                    )
+                    )),
+                    Map.entry(Throwable.class, new Converter(
+                            MethodHandles.foldArguments(lookup.findVirtual(LuaContext.class, "wrapThrowable", MethodType.methodType(void.class, Addressable.class, Throwable.class)), luaContextByState)
+                                    .asType(MethodType.methodType(void.class, MemoryAddress.class, Throwable.class)),
+                            lookup.findStatic(LuaContext.class, "getWrappedObject", MethodType.methodType(Object.class, Addressable.class, int.class))
+                                    .asType(MethodType.methodType(Object.class, MemoryAddress.class, int.class))
+                    ))
             );
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -73,16 +81,23 @@ public class FunctionAdapter {
     }
 
     public static @NotNull MemoryAddress adaptToLua(@NotNull MethodHandle javaHandle, @NotNull ResourceScope scope) {
-        // TODO: validate argument count (lua_gettop)
+        // TODO: validate argument count (lua_gettop), varargs
+        // TODO: exception handling
         var type = javaHandle.type();
         var rtype = type.returnType();
         var rConverter = Objects.requireNonNull(CONVERTERS.get(rtype).toLua());
         var collectArguments = MethodHandles.collectArguments(rConverter, 1, javaHandle);
         var pCount = type.parameterCount();
 
-        for (int i = 0; i < pCount; i++) {
+        for (int i = 0, j = 0; i < pCount; i++, j++) {
             var ptype = type.parameterType(i);
-            var pConverter = MethodHandles.insertArguments(Objects.requireNonNull(CONVERTERS.get(ptype).fromLua()), 1, i + 1);
+            if (i == 0 && ptype == MemoryAddress.class) {
+                j--;
+                int[] reordered = IntStream.concat(IntStream.of(0), IntStream.rangeClosed(0, pCount - 1)).toArray();
+                collectArguments = MethodHandles.permuteArguments(collectArguments, collectArguments.type().dropParameterTypes(0, 1), reordered);
+                continue;
+            }
+            var pConverter = MethodHandles.insertArguments(Objects.requireNonNull(CONVERTERS.get(ptype).fromLua()), 1, j + 1);
             int[] reordered = IntStream.rangeClosed(0, pCount - i).toArray();
             reordered[0] = 1;
             reordered[1] = 0;
@@ -99,11 +114,5 @@ public class FunctionAdapter {
 
     private static int voidToLua(@NotNull MemoryAddress ignoredL) {
         return 0;
-    }
-
-    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException {
-        var lookup = MethodHandles.lookup();
-        var adapted = adaptToLua(lookup.findStatic(FunctionAdapter.class, "test", MethodType.methodType(void.class, String.class, String.class)), ResourceScope.newImplicitScope());
-        System.out.println(adapted);
     }
 }
